@@ -1,0 +1,110 @@
+.dashboard-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    position: relative; /* Ensure the container is positioned to allow the ::before pseudo-element to be positioned relative to it */
+}
+
+.dashboard-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/img/form3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Makes the background fixed */
+    z-index: -1;
+}
+
+
+.dashboard-content {
+    width: 100%;
+    height: auto;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-expanded {
+    margin-left: 400px;
+    transition: 0.2s ease-in-out;
+}
+
+.content-collapsed {
+    margin-left: 125px;
+    transition: 0.2s ease-in-out;
+}
+
+.dashboard-menu {
+    width: auto;
+    height: auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.menu {
+    width: 300px;
+    height: 40px;
+    padding: 30px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: rgba(0,0,0,0.1) 0px 2px 4px;
+    border: 3px solid transparent;
+
+}
+.dashboard-menu div ul {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard-menu div ul li {
+    color: grey;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.active-menu {
+    background-color: hsla( 153deg , 53% , 53% , 1);
+}
+
+.dashboard-menu .menu.active-menu ul li {
+    color: white;
+}
+
+@keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+.dashboard-menu .menu.active-menu ul i {
+    color: white;
+    animation: blink 1s infinite;
+}
+
+.form-content {
+    margin-top: 10px;
+    width: auto;
+    height: auto;
+    /* background-color: white; */
+    border-radius: 10px;
+}

@@ -1,0 +1,31 @@
+POST http://localhost:5000/surat/kematian
+Content-Type: application/json
+
+{
+   "data_diri" : "test", 
+   "surat_pengantar" : "test", 
+   "tujuan" : "test", 
+   "yang_ttd" : "test"
+}
+
+###
+
+GET http://localhost:5000/laporan/2024
+
+
+###
+
+GET http://localhost:5000/surat
+
+###
+
+PUT http://localhost:5000/surat/1
+Content-Type: application/json 
+
+{
+   "nomor_surat" : "500/123/KEL-MT/IV/2024"
+}
+
+###
+
+GET http://localhost:5000/surat/nomor/8

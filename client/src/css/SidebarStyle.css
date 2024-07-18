@@ -1,0 +1,128 @@
+.side-bar {
+    /* width: 125px; */
+    width: 400px;
+    height: 100vh;
+    background-color: #ffff;
+    padding: 1%;
+    box-shadow: rgba(100, 100, 111, 1.3,1.3) 0px 7px 29px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: 0.2s ease-in-out;
+    position: fixed;
+}
+
+.side-bar-close{
+    width: 125px;
+    height: 100vh;
+    background-color: #ffff;
+    padding: 1%;
+    box-shadow: rgba(100, 100, 111, 1.3,1.3) 0px 7px 29px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: 0.2s ease-in-out;
+    position: fixed;
+}
+
+.open {
+    position: relative;
+    left: 100%;
+    margin-left: -10px;
+    width: 50px;
+    height: 50px;
+    margin-bottom: -50px;
+    padding: 10px;
+    border-radius: 50%;
+    color: white;
+    background-color: darkorange;
+    box-shadow: rgba(100, 100, 111, 1.3,1.3) 0px 7px 29px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.close-open {
+    display: none;
+    transition: 0.2s ease-in-out;
+}
+
+.close {
+    position: relative;
+    left: 100%;
+    margin-left: -10px;
+    width: 50px;
+    height: 50px;
+    margin-bottom: -50px;
+    padding: 10px;
+    border-radius: 50%;
+    color: white;
+    background-color: darkorange;
+    box-shadow: rgba(100, 100, 111, 1.3,1.3) 0px 7px 29px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.close-close {
+    display: none;
+    transition: 0.2s ease-in-out;
+}
+
+.menuBox {
+    width: auto;
+    height: 65px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    cursor: pointer;
+    background-color: #ffff;
+    border-radius: 10px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.menuBox:hover {
+    background-color: lightgray;
+}
+
+.menuBox:first-of-type:hover, .menuBox:nth-of-type(5):hover {
+    background-color: transparent;
+}
+
+.menuBox div {
+    display: flex;
+    gap: 10px;
+    position: fixed;
+}
+
+.menuBox div i {
+    color: grey;
+    transform: scale(1.3,1.3);
+    margin-left: 10px;
+}
+
+.menuBox div p {
+    font-size: 1rem;
+    color: grey;
+}
+
+.active {
+    box-shadow: none;
+    cursor: default;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    border-right: 3px solid darkorange;
+}
+.active:hover {
+    background-color: white;
+}
+
+.activeIcon {
+    color: white;
+}
