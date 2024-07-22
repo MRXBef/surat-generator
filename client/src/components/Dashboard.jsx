@@ -16,6 +16,7 @@ import KeteranganBedaNama from './KeteranganBedaNama';
 import KeteranganKematian from './KeteranganKematian';
 import KeteranganPrilakuBaik from './KeteranganPrilakuBaik';
 import KeteranganAhliWaris from './KeteranganAhliWaris';
+import KeteranganCampuran from './KeteranganCampuran';
 
 const Dashboard = () => {
     const [name, setName] = useState('')
@@ -65,6 +66,10 @@ const Dashboard = () => {
             case '8':
                     setActiveMenu('8')
                     setForm(<KeteranganAhliWaris/>)
+                break;
+            case '9':
+                    setActiveMenu('9')
+                    setForm(<KeteranganCampuran/>)
                 break;
             
             default:
@@ -145,6 +150,12 @@ const Dashboard = () => {
                     <ul>
                         <i><CIcon icon={cilPen}/></i>
                         <li>Surat Pernyataan Ahli Waris</li>
+                    </ul>
+                </div>
+                <div className={`menu ${activeMenu === '9' ? 'active-menu' : ''}`} onClick={() => handleMenuClicked('9')}>
+                    <ul>
+                        <i><CIcon icon={cilPen}/></i>
+                        <li>Surat Keterangan Campuran</li>
                     </ul>
                 </div>
             </div>
