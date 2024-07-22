@@ -14,7 +14,8 @@ import {
 
     findAllSurat,
     changeNomorSurat,
-    getNomorSuratByName
+    getNomorSuratByName,
+    createCampuran
 
 } from '../controllers/surat.js'
 import { Login, Logout, Register } from '../controllers/Users.js'
@@ -38,6 +39,7 @@ Router.post('/surat/belummenikah', verifyToken, createBelumMenikah)
 Router.post('/surat/domisiliusaha', verifyToken, createDomisiliUsaha)
 Router.post('/surat/kelakuanbaik', verifyToken, createKelakuanBaik)
 Router.post('/surat/tidakmampu', verifyToken, createTidakMampu)
+Router.post('/surat/campuran', verifyToken, createCampuran)
 Router.post('/surat/usaha', verifyToken, createUsaha)
 
 Router.get('/laporan/:tahun', verifyToken, findDataByYears)

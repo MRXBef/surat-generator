@@ -116,10 +116,11 @@ axiosJWT.interceptors.request.use(async(config) => {
 const handleSaveToDb = async() => {
   try {
     const response = await axiosJWT.post(
-      'http://localhost:5000/surat/tidakmampu',
+      'http://localhost:5000/surat/campuran',
       {
       data_diri: `${nomorSuratIndex},${nama},${nik},${tempatLahir}${ttl},${jk},${status},${agama},${kewarganegaraan},${pekerjaan},${alamat}`,
       surat_pengantar: `${dari},${lingkungan},${nomorSurat}`,
+      pernyataan: `${pernyataan}`,
       tujuan: `${keperluan}`,
       yang_ttd: `${role},${namaTtd},${nip}`
       },

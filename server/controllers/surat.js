@@ -8,6 +8,7 @@ import kelakuanBaik from "../models/kelakuanBaik.js"
 import tidakMampu from "../models/tidakMampuModels.js"
 import usaha from "../models/usahaModels.js"
 import Surat from "../models/suratModels.js"
+import campuran from "../models/campuranModels.js"
 
 export const createKematian = async(req, res) => {
     const {data_diri, surat_pengantar, tujuan, yang_ttd} =req.body
@@ -139,6 +140,28 @@ export const createTidakMampu = async(req, res) => {
     }
 }
 
+export const createCampuran = async(req, res) => {
+    const {data_diri, surat_pengantar, pernyataan, tujuan, yang_ttd} =req.body
+    if(!data_diri || !surat_pengantar || !pernyataan || !tujuan || !yang_ttd){
+        return res.status(400).json({msg: "Semua data harus diisikan!"})
+    }
+
+    try {
+        await campuran.create({
+            data_diri: data_diri,
+            surat_pengantar: surat_pengantar,
+            pernyataan: pernyataan,
+            tujuan: tujuan,
+            yang_ttd, yang_ttd
+        })
+        res.status(200).json({msg: "Surat berhasil diupload!"})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: 'Terjadi kesalahan dalam server' });
+
+    }
+}
+
 export const createDomisiliUsaha = async(req, res) => {
     const {data_usaha, surat_pengantar, tujuan, yang_ttd} =req.body
     if(!data_usaha || !surat_pengantar || !tujuan || !yang_ttd){
@@ -209,6 +232,7 @@ export const findDataByYears = async (req, res) => {
         Kematian: 'Surat Keterangan Kematian',
         kelakuanBaik: 'Surat Pengantar Kelakuan Baik',
         ahliWaris: 'Surat Keterangan Ahli Waris',
+        campuran: 'Surat Keterangan Campuran',
     };
 
     try {
@@ -221,6 +245,7 @@ export const findDataByYears = async (req, res) => {
             Kematian,
             kelakuanBaik,
             ahliWaris,
+            campuran,
         };
 
         const dataPerBulan = Object.keys(models).reduce((acc, modelName) => {
@@ -252,7 +277,7 @@ export const findDataByYears = async (req, res) => {
             });
         }
 
-        // Mengurutkan dataPerBulan berdasarkan bulan dari Januari hingga Desember
+        
         const sortedDataPerBulan = {};
         Object.keys(dataPerBulan).forEach(modelName => {
             sortedDataPerBulan[modelNameMapping[modelName]] = {};
