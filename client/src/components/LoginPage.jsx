@@ -6,6 +6,7 @@ import CIcon from '@coreui/icons-react';
 import {cilUser, cilHttps, cilShieldAlt} from '@coreui/icons';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('')
@@ -13,6 +14,19 @@ const LoginPage = () => {
     const [msg, setMsg] = useState('')
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+        checkIsLoggedIn()
+    }, [])
+
+    const checkIsLoggedIn = async() => {
+        try {
+            await axios.get('http://localhost:5000/login')
+        } catch (error) {
+            console.log(error.response)
+            navigate('/dashboard')
+        }
+    }
 
     const login = async(e) => {
         e.preventDefault()

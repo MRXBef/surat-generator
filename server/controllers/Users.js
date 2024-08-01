@@ -92,3 +92,9 @@ export const Logout = async(req, res) => {
         res.status(500).json({msg: "Internal server error!"})
     }
 }
+
+export const isUserLoggedIn = async(req, res) => {
+    const cookie = req.cookies.refreshToken
+    console.log(cookie)
+    if(cookie != undefined) return res.sendStatus(403)
+}

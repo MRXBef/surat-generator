@@ -18,13 +18,14 @@ import {
     createCampuran
 
 } from '../controllers/surat.js'
-import { Login, Logout, Register } from '../controllers/Users.js'
+import { isUserLoggedIn, Login, Logout, Register } from '../controllers/Users.js'
 import {verifyToken} from "../middleware/verifyToken.js"
 
 const Router = express.Router()
 
 Router.post('/register', Register)
 Router.post('/login', Login)
+Router.get('/login', isUserLoggedIn)
 Router.get('/token', refreshToken)
 Router.delete('/logout', Logout)
 
