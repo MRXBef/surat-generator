@@ -95,6 +95,15 @@ export const Logout = async(req, res) => {
 
 export const isUserLoggedIn = async(req, res) => {
     const cookie = req.cookies.refreshToken
-    console.log(cookie)
-    if(cookie != undefined) return res.sendStatus(403)
+    if(cookie == undefined) return res.sendStatus(403)
+    try {
+        const user = await Users.findOne({
+            where: {refreshToken : cookie}
+        })
+        if(!user) return res.status(403).json({msg: "User not found"})
+        res.sendStatus(200)
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({msg: "Internal server error!"})
+    }
 }
