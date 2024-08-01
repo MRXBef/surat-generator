@@ -295,7 +295,8 @@ axiosJWT.interceptors.request.use(async(config) => {
                 <select className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setStatus(e.target.value)}} required>
                       <option value="Menikah">Menikah</option>
                       <option value="Belum Menikah">Belum Menikah</option>
-                      <option value="Bercerai">Bercerai</option>
+                      <option value="Cerai Hidup">Cerai Hidup</option>
+                      <option value="Cerai Mati">Cerai Mati</option>
                 </select>
             </div>
             <p className="help has-text-black">Pilih status</p>
