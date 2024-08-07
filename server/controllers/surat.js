@@ -9,6 +9,7 @@ import tidakMampu from "../models/tidakMampuModels.js"
 import usaha from "../models/usahaModels.js"
 import Surat from "../models/suratModels.js"
 import campuran from "../models/campuranModels.js"
+import taksiranTanah from "../models/taksiranTanah.js"
 
 export const createKematian = async(req, res) => {
     const {data_diri, surat_pengantar, tujuan, yang_ttd} =req.body
@@ -194,6 +195,27 @@ export const createUsaha = async(req, res) => {
             data_diri: data_diri,
             surat_pengantar: surat_pengantar,
             usaha_keperluan: usaha_keperluan,
+            yang_ttd, yang_ttd
+        })
+        res.status(200).json({msg: "Surat berhasil diupload!"})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: 'Terjadi kesalahan dalam server' });
+    }
+}
+
+export const createTaksiranTanah = async(req, res) => {
+    const {data_diri, surat_pengantar, tanah, harga_tanah, yang_ttd} =req.body
+    if(!data_diri || !surat_pengantar || !tanah || !harga_tanah || !yang_ttd){
+        return res.status(400).json({msg: "Semua data harus diisikan!"})
+    }
+
+    try {
+        await taksiranTanah.create({
+            data_diri: data_diri,
+            surat_pengantar: surat_pengantar,
+            tanah: tanah,
+            harga_tanah, harga_tanah,
             yang_ttd, yang_ttd
         })
         res.status(200).json({msg: "Surat berhasil diupload!"})

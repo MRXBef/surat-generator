@@ -14,6 +14,7 @@ import usaha from "./models/usahaModels.js";
 import ahliWaris from "./models/ahliWarisModels.js"
 import Surat from "./models/suratModels.js"
 import campuran from "./models/campuranModels.js"
+import taksiranTanah from "./models/taksiranTanah.js"
 
 dotenv.config()
 
@@ -33,6 +34,7 @@ try {
     // await db.sync(ahliWaris)
     // await db.sync(Surat)
     // await db.sync(campuran)
+    // await db.sync(taksiranTanah)
 } catch (error) {
     console.log(error)
 }

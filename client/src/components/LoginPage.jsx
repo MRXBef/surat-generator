@@ -24,7 +24,7 @@ const LoginPage = () => {
             const response = await axios.get('http://localhost:5000/login')
             if(response.status == 200) navigate('/dashboard')
         } catch (error) {
-            console.log(error.response)
+            console.log(error.response.data.msg)
         }
     }
 
