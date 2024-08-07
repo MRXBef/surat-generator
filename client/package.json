@@ -21,6 +21,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.24.1",
     "react-to-print": "^2.15.1",
+    "terbilang-js": "^1.0.1",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {

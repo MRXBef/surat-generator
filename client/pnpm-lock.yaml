@@ -41,6 +41,9 @@ importers:
       react-to-print:
         specifier: ^2.15.1
         version: 2.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      terbilang-js:
+        specifier: ^1.0.1
+        version: 1.0.1
       xlsx:
         specifier: ^0.18.5
         version: 0.18.5
@@ -1544,6 +1547,9 @@ packages:
 
   svg-arc-to-cubic-bezier@3.2.0:
     resolution: {integrity: sha512-djbJ/vZKZO+gPoSDThGNpKDO+o+bAeA4XQKovvkNCqnIS2t+S4qnLAGQhyyrulhCFRl1WWzAp0wUDV8PpTVU3g==}
+
+  terbilang-js@1.0.1:
+    resolution: {integrity: sha512-aGsCMQXZ7rEw7AePL7zHMmqyQ1/EwpddjaXcEQ2TioDxaQ7RT8X2XrJL4N9LQs41GmCTTskbvqOswr30DrYu0Q==}
 
   text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
@@ -3366,6 +3372,8 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   svg-arc-to-cubic-bezier@3.2.0: {}
+
+  terbilang-js@1.0.1: {}
 
   text-table@0.2.0: {}
 
