@@ -18,6 +18,7 @@ import KeteranganPrilakuBaik from './KeteranganPrilakuBaik';
 import KeteranganAhliWaris from './KeteranganAhliWaris';
 import KeteranganCampuran from './KeteranganCampuran';
 import KeteranganTanah from './KeteranganTanah';
+import KeteranganBbm from './KeteranganBbm';
 
 const Dashboard = () => {
     const [name, setName] = useState('')
@@ -75,6 +76,10 @@ const Dashboard = () => {
             case '10':
                     setActiveMenu('10')
                     setForm(<KeteranganTanah/>)
+                break;
+            case '11':
+                    setActiveMenu('11')
+                    setForm(<KeteranganBbm/>)
                 break;
             
             default:
@@ -167,6 +172,12 @@ const Dashboard = () => {
                     <ul>
                         <i><CIcon icon={cilPen}/></i>
                         <li>Surat Keterangan Tanah</li>
+                    </ul>
+                </div>
+                <div className={`menu ${activeMenu === '11' ? 'active-menu' : ''}`} onClick={() => handleMenuClicked('11')}>
+                    <ul>
+                        <i><CIcon icon={cilPen}/></i>
+                        <li>Surat Rekomendasi BBM</li>
                     </ul>
                 </div>
             </div>

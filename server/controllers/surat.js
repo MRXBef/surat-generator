@@ -195,7 +195,7 @@ export const createUsaha = async(req, res) => {
             data_diri: data_diri,
             surat_pengantar: surat_pengantar,
             usaha_keperluan: usaha_keperluan,
-            yang_ttd, yang_ttd
+            yang_ttd: yang_ttd
         })
         res.status(200).json({msg: "Surat berhasil diupload!"})
     } catch (error) {
@@ -279,7 +279,6 @@ export const findDataByYears = async (req, res) => {
             }, {});
             return acc;
         }, {});
-
         for (const [modelName, model] of Object.entries(models)) {
             const records = await model.findAll({
                 where: {
@@ -291,7 +290,6 @@ export const findDataByYears = async (req, res) => {
                     }
                 }
             });
-
             records.forEach(record => {
                 const createdAt = new Date(record.createdAt);
                 const bulan = String(createdAt.getMonth() + 1).padStart(2, '0');
@@ -300,8 +298,6 @@ export const findDataByYears = async (req, res) => {
                 dataPerBulan[modelName][namaBulan]++;
             });
         }
-
-        
         const sortedDataPerBulan = {};
         Object.keys(dataPerBulan).forEach(modelName => {
             sortedDataPerBulan[modelNameMapping[modelName]] = {};
@@ -309,7 +305,6 @@ export const findDataByYears = async (req, res) => {
                 sortedDataPerBulan[modelNameMapping[modelName]][bulanMapping[key]] = dataPerBulan[modelName][bulanMapping[key]];
             });
         });
-
         res.json(sortedDataPerBulan);
     } catch (error) {
         console.error('Error saat mencari dan menghitung data per bulan:', error);
