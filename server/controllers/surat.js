@@ -10,6 +10,7 @@ import usaha from "../models/usahaModels.js"
 import Surat from "../models/suratModels.js"
 import campuran from "../models/campuranModels.js"
 import taksiranTanah from "../models/taksiranTanah.js"
+import rekomendasiBbm from "../models/rekomendasiBbm.js"
 
 export const createKematian = async(req, res) => {
     const {data_diri, surat_pengantar, tujuan, yang_ttd} =req.body
@@ -22,7 +23,7 @@ export const createKematian = async(req, res) => {
             data_diri: data_diri,
             surat_pengantar: surat_pengantar,
             tujuan: tujuan,
-            yang_ttd, yang_ttd
+            yang_ttd: yang_ttd
         })
         res.status(200).json({msg: "Surat berhasil diupload!"})
     } catch (error) {
@@ -43,9 +44,9 @@ export const createBedaNama = async(req, res) => {
             data_diri: data_diri,
             yang_bersangkutan: yang_bersangkutan,
             tujuan: tujuan,
-            saksi, saksi,
-            kepala_lembaga1, kepala_lembaga1,
-            kepala_lembaga2, kepala_lembaga2
+            saksi: saksi,
+            kepala_lembaga1: kepala_lembaga1,
+            kepala_lembaga2: kepala_lembaga2
         })
         res.status(200).json({msg: "Surat berhasil diupload!"})
     } catch (error) {
@@ -66,9 +67,9 @@ export const createAhliWaris = async(req, res) => {
             pewaris: pewaris,
             jumlah_orang: jumlah_orang,
             tujuan: tujuan,
-            saksi, saksi,
-            kepala_lembaga, kepala_lembaga,
-            kelurahan, kelurahan
+            saksi: saksi,
+            kepala_lembaga: kepala_lembaga,
+            kelurahan: kelurahan
         })
         res.status(200).json({msg: "Surat berhasil diupload!"})
     } catch (error) {
@@ -89,7 +90,7 @@ export const createBelumMenikah = async(req, res) => {
             data_diri: data_diri,
             surat_pengantar: surat_pengantar,
             tujuan: tujuan,
-            yang_ttd, yang_ttd
+            yang_ttd: yang_ttd
         })
         res.status(200).json({msg: "Surat berhasil diupload!"})
     } catch (error) {
@@ -110,7 +111,7 @@ export const createKelakuanBaik = async(req, res) => {
             data_diri: data_diri,
             surat_pengantar: surat_pengantar,
             tujuan: tujuan,
-            yang_ttd, yang_ttd
+            yang_ttd: yang_ttd
         })
         res.status(200).json({msg: "Surat berhasil diupload!"})
     } catch (error) {
@@ -131,7 +132,7 @@ export const createTidakMampu = async(req, res) => {
             data_diri: data_diri,
             surat_pengantar: surat_pengantar,
             tujuan: tujuan,
-            yang_ttd, yang_ttd
+            yang_ttd: yang_ttd
         })
         res.status(200).json({msg: "Surat berhasil diupload!"})
     } catch (error) {
@@ -153,7 +154,7 @@ export const createCampuran = async(req, res) => {
             surat_pengantar: surat_pengantar,
             pernyataan: pernyataan,
             tujuan: tujuan,
-            yang_ttd, yang_ttd
+            yang_ttd: yang_ttd
         })
         res.status(200).json({msg: "Surat berhasil diupload!"})
     } catch (error) {
@@ -174,7 +175,7 @@ export const createDomisiliUsaha = async(req, res) => {
             data_usaha: data_usaha,
             surat_pengantar: surat_pengantar,
             tujuan: tujuan,
-            yang_ttd, yang_ttd
+            yang_ttd: yang_ttd
         })
         res.status(200).json({msg: "Surat berhasil diupload!"})
     } catch (error) {
@@ -204,6 +205,25 @@ export const createUsaha = async(req, res) => {
     }
 }
 
+export const createBbm = async(req, res) => {
+    const {data_rekomendasi, kebutuhan_dan_sarana, yang_ttd} =req.body
+    if(!data_rekomendasi || !kebutuhan_dan_sarana || !yang_ttd){
+        return res.status(400).json({msg: "Semua data harus diisikan!"})
+    }
+
+    try {
+        await rekomendasiBbm.create({
+            data_rekomendasi: data_rekomendasi,
+            kebutuhan_dan_sarana: kebutuhan_dan_sarana,
+            yang_ttd: yang_ttd
+        })
+        res.status(200).json({msg: "Surat berhasil diupload!"})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: 'Terjadi kesalahan dalam server' });
+    }
+}
+
 export const createTaksiranTanah = async(req, res) => {
     const {data_diri, surat_pengantar, tanah, harga_tanah, yang_ttd} =req.body
     if(!data_diri || !surat_pengantar || !tanah || !harga_tanah || !yang_ttd){
@@ -216,7 +236,7 @@ export const createTaksiranTanah = async(req, res) => {
             surat_pengantar: surat_pengantar,
             tanah: tanah,
             harga_tanah, harga_tanah,
-            yang_ttd, yang_ttd
+            yang_ttd: yang_ttd
         })
         res.status(200).json({msg: "Surat berhasil diupload!"})
     } catch (error) {
@@ -256,6 +276,7 @@ export const findDataByYears = async (req, res) => {
         ahliWaris: 'Surat Keterangan Ahli Waris',
         campuran: 'Surat Keterangan Campuran',
         taksiranTanah: 'Surat Keterangan Tanah',
+        rekomendasiBbm: 'Surat Keterangan Bbm',
     };
 
     try {
@@ -270,6 +291,7 @@ export const findDataByYears = async (req, res) => {
             ahliWaris,
             campuran,
             taksiranTanah,
+            rekomendasiBbm,
         };
 
         const dataPerBulan = Object.keys(models).reduce((acc, modelName) => {

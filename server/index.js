@@ -15,6 +15,7 @@ import ahliWaris from "./models/ahliWarisModels.js"
 import Surat from "./models/suratModels.js"
 import campuran from "./models/campuranModels.js"
 import taksiranTanah from "./models/taksiranTanah.js"
+import rekomendasiBbm from "./models/rekomendasiBbm.js";
 
 dotenv.config()
 
@@ -24,17 +25,18 @@ const PORT = process.env.PORT
 try {
     await db.authenticate()
     console.log("Database Connected")
-    // await db.sync(Kematian)
-    // await db.sync(bedaNama)
-    // await db.sync(belumMenikah)
-    // await db.sync(domisiliUsaha)
-    // await db.sync(kelakuanBaik)
-    // await db.sync(tidakMampu)
-    // await db.sync(usaha)
-    // await db.sync(ahliWaris)
-    // await db.sync(Surat)
-    // await db.sync(campuran)
-    // await db.sync(taksiranTanah)
+    await db.sync(Kematian)
+    await db.sync(bedaNama)
+    await db.sync(belumMenikah)
+    await db.sync(domisiliUsaha)
+    await db.sync(kelakuanBaik)
+    await db.sync(tidakMampu)
+    await db.sync(usaha)
+    await db.sync(ahliWaris)
+    await db.sync(Surat)
+    await db.sync(campuran)
+    await db.sync(taksiranTanah)
+    await db.sync(rekomendasiBbm)
 } catch (error) {
     console.log(error)
 }

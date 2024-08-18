@@ -1,24 +1,6 @@
 import express from 'express'
 import { refreshToken } from '../controllers/refreshToken.js'
-import { 
-    createKematian,
-    createAhliWaris,
-    createBedaNama,
-    createBelumMenikah,
-    createDomisiliUsaha,
-    createKelakuanBaik,
-    createTidakMampu,
-    createUsaha,
-
-    findDataByYears,
-
-    findAllSurat,
-    changeNomorSurat,
-    getNomorSuratByName,
-    createCampuran,
-    createTaksiranTanah
-
-} from '../controllers/surat.js'
+import { createKematian,createAhliWaris,createBedaNama,createBelumMenikah,createDomisiliUsaha,createKelakuanBaik,createTidakMampu,createUsaha,findDataByYears,findAllSurat,changeNomorSurat,getNomorSuratByName,createCampuran,createTaksiranTanah, createBbm} from '../controllers/surat.js'
 import { isUserLoggedIn, Login, Logout, Register } from '../controllers/Users.js'
 import {verifyToken} from "../middleware/verifyToken.js"
 
@@ -44,6 +26,7 @@ Router.post('/surat/tidakmampu', verifyToken, createTidakMampu)
 Router.post('/surat/campuran', verifyToken, createCampuran)
 Router.post('/surat/usaha', verifyToken, createUsaha)
 Router.post('/surat/taksirantanah', verifyToken, createTaksiranTanah)
+Router.post('/surat/bbm', verifyToken, createBbm)
 
 Router.get('/laporan/:tahun', verifyToken, findDataByYears)
 

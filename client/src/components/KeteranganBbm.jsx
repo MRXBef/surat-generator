@@ -99,12 +99,11 @@ axiosJWT.interceptors.request.use(async(config) => {
   const handleSaveToDb = async() => {
     try {
       const response = await axiosJWT.post(
-        'http://localhost:5000/surat/usaha',
+        'http://localhost:5000/surat/bbm',
         {
-        // data_diri: `${nomorSuratIndex},${nama},${nik},${tempatLahir}${tempatLahir}${ttl},${jk},${status},${agama},${kewarganegaraan},${pekerjaan},${alamat}`,
-        // surat_pengantar: `${dari},${lingkungan},${nomorSurat}`,
-        // usaha_keperluan: `${namaUsaha},${tahun},${keperluan}`,
-        // yang_ttd: `${role},${namaTtd},${nip}`
+        data_rekomendasi: `${nomorSuratIndex},${nama},${nik},${alamat},${konsumen},${kegiatan}`,
+        kebutuhan_dan_sarana: `${jenisAlat},${jumlahAlat},${jenisBbm},${kebutuhanBbm},${jamOperasi},${konsumsi},${jumlah},${tempatPengambilan}.${nomorPenyalur},${lokasiSPBU},${masaBerlaku}`,
+        yang_ttd: `${role},${namaTtd},${golongan},${nip}`
         },
         {
           headers: {
@@ -117,7 +116,7 @@ axiosJWT.interceptors.request.use(async(config) => {
         setShowPrint('hidden')
       }
     } catch (error) {
-      console.log(error)
+      console.log(error.response)
     }
   }
 //ENDTOKEN HANDLER
@@ -324,7 +323,7 @@ const styles = StyleSheet.create({
 
   return (
     <form action="" style={{width: '100%'}} onSubmit={handlePrint}>
-      <h1 className='mb-5 mt-5' style={{fontSize: '20px', color: 'white', fontWeight: 'bold', borderRadius: '10px', textAlign: 'center'}}><span><i style={{position: 'absolute', marginTop: '3px', marginLeft: '-30px'}}><CIcon icon={cilNotes}/></i></span> SURAT KETERANGAN USAHA</h1>
+      <h1 className='mb-5 mt-5' style={{fontSize: '20px', color: 'white', fontWeight: 'bold', borderRadius: '10px', textAlign: 'center'}}><span><i style={{position: 'absolute', marginTop: '3px', marginLeft: '-30px'}}><CIcon icon={cilNotes}/></i></span> SURAT REKOMENDASI BBM</h1>
 
       {/* DATA REKOMENDASI */}
       <div className="data-diri" style={{backgroundColor: 'white', padding: '100px', width: '100%', borderRadius: '10px'}}>
