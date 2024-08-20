@@ -28,10 +28,12 @@ const KeteranganBedaNama = () => {
   const [kepalaLembaga1,  setKepalaLembaga1] = useState('')
   const [lingkungan1,  setLingkungan1] = useState('')
   const [nip1,  setNip1] = useState('')
-  
-  const [kepalaLembaga2,  setKepalaLembaga2] = useState('')
-  const [lingkungan2,  setLingkungan2] = useState('')
-  const [nip2,  setNip2] = useState('')
+
+  // yang bertanda tangan
+  const [role,  setRole] = useState('Lurah')
+  const [namaTtd, setNamaTtd] = useState('')
+  const [golongan, setGolongan] = useState('')
+  const [nip, setNip] = useState('')
   // -----------------------------------------------------
   const [showPrint, setShowPrint] = useState('hidden')
 
@@ -103,7 +105,7 @@ const handleSaveToDb = async() => {
       tujuan: `${keperluan}`,
       saksi: `${saksi1},${saksi2}`,
       kepala_lembaga1: `${kepalaLembaga1},${lingkungan1},${nip1}`,
-      kepala_lembaga2: `${kepalaLembaga2},${lingkungan2},${nip2}`
+      kepala_lembaga2: `${role},${namaTtd},${golongan},${nip}`
       },
       {
         headers: {
@@ -180,13 +182,13 @@ const handleSaveToDb = async() => {
                     <Text style={StyleSheet.create({fontSize: 12, textAlign: 'center'})}>NIP. {nip1} </Text>
                     
                 </View>
-                <View style={StyleSheet.create({width: '50%'})}>
-                    <Text style={StyleSheet.create({fontSize: 12})}>Tanggal :</Text>
-                    <Text style={StyleSheet.create({fontSize: 12})}>Reg No: </Text>
-                    <Text style={StyleSheet.create({fontSize: 12, textAlign: 'center'})}>Kepala Lembaga Kemasyarakatan Lingkungan {toUpperCaseFirstStr(lingkungan2)}</Text>
-                    <Text style={StyleSheet.create({fontSize: 12, textAlign: 'center', marginTop: 75, textDecoration: 'underline', fontWeight: 'bold'})}>{kepalaLembaga2.toUpperCase()}</Text>
-                    <Text style={StyleSheet.create({fontSize: 12, textAlign: 'center'})}>NIP. {nip2} </Text>
-    
+                <View style={StyleSheet.create({width: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center'})}>
+                    <Text style={StyleSheet.create({fontSize: 12})}>Mataram, {tanggalSaatIni}</Text>
+                    <Text style={StyleSheet.create({fontSize: 12})}>a.n Camat Mataram,</Text>
+                    <Text style={StyleSheet.create({fontSize: 12})}>{toUpperCaseFirstStr(role)}</Text>
+                    <Text style={StyleSheet.create({fontSize: 12, marginTop: 75, fontWeight: 'bold', textDecoration: 'underline'})}>{namaTtd.toUpperCase()}</Text>
+                    <Text style={StyleSheet.create({fontSize: 12, fontWeight: 'bold'})}>{toUpperCaseFirstStr(golongan)}</Text>
+                    <Text style={StyleSheet.create({fontSize: 12, textAlign: 'center'})}>NIP. {nip}</Text>
                 </View>
             </View>
         </Page>
@@ -322,20 +324,20 @@ const handleSaveToDb = async() => {
       
       {/* YANG MENGETAHUI*/}
       <div className="data-diri" style={{backgroundColor: 'white', padding: '100px', width: '100%', borderRadius: '10px', marginTop: '30px'}}>
-        <h1 className='mb-5' style={{fontSize: '20px', color: 'darkorange', fontWeight: 'bold'}}>YANG MENGETAHUI (KEPALA LEMBAGA 1)</h1>
-        <label className="label has-text-black">Kepala Lembaga 1</label>
+        <h1 className='mb-5' style={{fontSize: '20px', color: 'darkorange', fontWeight: 'bold'}}>YANG MENGETAHUI (KEPALA LEMBAGA)</h1>
+        <label className="label has-text-black">Kepala Lembaga</label>
         <div className="field">
             <div className="control">
                 <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setKepalaLembaga1(e.target.value)}} required/>
             </div>
-            <p className="help has-text-black">Masukkan nama kepala lembaga 1</p>
+            <p className="help has-text-black">Masukkan nama kepala lembaga</p>
         </div>
-        <label className="label has-text-black">Lingkungan 1</label>
+        <label className="label has-text-black">Lingkungan</label>
         <div className="field">
             <div className="control">
                 <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setLingkungan1(e.target.value)}} required/>
             </div>
-            <p className="help has-text-black">Masukkan nama lingkungan lembaga 1</p>
+            <p className="help has-text-black">Masukkan nama lingkungan lembaga</p>
         </div>
         <label className="label has-text-black">NIP</label>
         <div className="field">
@@ -346,27 +348,37 @@ const handleSaveToDb = async() => {
         </div>
       </div>
 
-      {/* YANG MENGETAHUI 2*/}
+      {/* YANG BERTANDA TANGAN */}
       <div className="data-diri" style={{backgroundColor: 'white', padding: '100px', width: '100%', borderRadius: '10px', marginTop: '30px'}}>
-        <h1 className='mb-5' style={{fontSize: '20px', color: 'darkorange', fontWeight: 'bold'}}>YANG MENGETAHUI (KEPALA LEMBAGA 2)</h1>
-        <label className="label has-text-black">Kepala Lembaga 2</label>
+        <h1 className='mb-5' style={{fontSize: '20px', color: 'darkorange', fontWeight: 'bold'}}>YANG BERTANDA TANGAN</h1>
+        <label className="label has-text-black">Jabatan</label>
         <div className="field">
-            <div className="control">
-                <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setKepalaLembaga2(e.target.value)}} required/>
+            <div className="control select is-fullwidth">
+                <select className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setRole(e.target.value)}} required>
+                  <option value="Lurah">Lurah</option>
+                  <option value="Sekretaris Lurah">Sekretaris Lurah</option>
+                </select>
             </div>
-            <p className="help has-text-black">Masukkan nama kepala lembaga 2</p>
+            <p className="help has-text-black">Pilih jabatan penanda tangan</p>
         </div>
-        <label className="label has-text-black">Lingkungan 2</label>
+        <label className="label has-text-black">Nama</label>
         <div className="field">
             <div className="control">
-                <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setLingkungan2(e.target.value)}} required/>
+                <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setNamaTtd(e.target.value)}} required/>
             </div>
-            <p className="help has-text-black">Masukkan nama lingkungan lembaga 2</p>
+            <p className="help has-text-black">Masukkan Nama penanda tangan</p>
+        </div>
+        <label className="label has-text-black">Pangkat Golongan</label>
+        <div className="field">
+            <div className="control">
+                <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setGolongan(e.target.value)}} required/>
+            </div>
+            <p className="help has-text-black">Masukkan Nama penanda tangan</p>
         </div>
         <label className="label has-text-black">NIP</label>
         <div className="field">
             <div className="control">
-                <input className="input is-fullwidth has-background-white has-text-black" type="number" placeholder="OPSIONAL" onChange={(e) => {setNip2(e.target.value)}}/>
+                <input className="input is-fullwidth has-background-white has-text-black" type="number" placeholder="" onChange={(e) => {setNip(e.target.value)}} required/>
             </div>
             <p className="help has-text-black">Contoh: 1928xxxxxxxxx</p>
         </div>
