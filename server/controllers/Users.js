@@ -88,7 +88,9 @@ export const Logout = async(req, res) => {
             where: {id: userID}
         })
         res.clearCookie('refreshToken', {
-            secure: true
+            httpOnly: true,
+            secure: true,
+            maxAge: 24 * 60 * 60 * 1000,
         }).status(200).json({msg: "Logout!"})
     } catch (error) {
         console.log(error)
