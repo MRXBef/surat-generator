@@ -67,11 +67,11 @@ export const Login = async(req, res) => {
         await Users.update({refreshToken: refreshToken}, {where: {id: userID}})
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
-            secure: true,
-            maxAge: 24 * 60 * 60 * 1000,
-            sameSite: 'lax',
-            path: '/'
-        })
+            secure: true, // Pastikan ini sesuai dengan pengaturan HTTPS
+            sameSite: 'lax', // 'lax' untuk mempermudah akses cookie
+            path: '/', // Pastikan cookie tersedia di seluruh aplikasi
+            maxAge: 24 * 60 * 60 * 1000, // Masa berlaku cookie (1 hari)
+        });
         res.json({accessToken})
     } catch (error) {
         console.log(error)
