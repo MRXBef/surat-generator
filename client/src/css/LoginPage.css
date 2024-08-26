@@ -71,6 +71,7 @@
         flex-direction: column;
         height: auto;
         font-size: 14px;
+        width: 80%;
     }
 
     .loginLogo{
