@@ -7,11 +7,13 @@ import {cilUser, cilHttps, cilShieldAlt} from '@coreui/icons';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import SpinnerLoader from './SpinnerLoader';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [msg, setMsg] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const navigate = useNavigate()
 
@@ -32,12 +34,17 @@ const LoginPage = () => {
         e.preventDefault()
 
         try {
+            setIsLoading(true)
             const response = await axios.post(`${import.meta.env.VITE_BASEURL}/login`,{
                 email: email,
                 password: password
             })
-            if(response) navigate('/dashboard')
+            if(response) {
+                navigate('/dashboard')
+                setIsLoading(false)
+            } 
         } catch (error) {
+            setIsLoading(false)
             setMsg(error.response.data.msg)
         }
     }
@@ -75,7 +82,15 @@ const LoginPage = () => {
                     </div>  
                     <div className="field">
                         <div className="control">
-                        <button onClick={login} className='button is-fullwidth'>MASUK</button>
+                        <button onClick={login} className='button is-fullwidth' style={{height: '50px'}}>
+                            {
+                                isLoading ? (
+                                    <SpinnerLoader color={'white'}/>
+                                ) : (
+                                    'MASUK'
+                                )
+                            }
+                        </button>
                         </div>
                     </div>
                     <p className='is-center'>

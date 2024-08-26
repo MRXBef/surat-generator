@@ -8,6 +8,7 @@ import XLSX from 'xlsx/dist/xlsx.full.min.js';
 import FileSaver from 'file-saver';
 import '../css/LaporanStyle.css';
 import { useNavigate } from 'react-router-dom';
+import SpinnerLoader from './SpinnerLoader';
 
 const Laporan = () => {
     const [name, setName] = useState('');
@@ -20,6 +21,9 @@ const Laporan = () => {
     const [dataPerBulan, setDataPerBulan] = useState({});
     const [totalPerBulan, setTotalPerBulan] = useState({});
     const [totalTahunan, setTotalTahunan] = useState(0);
+
+    //spinner
+    const [isLoading, setIsLoading] = useState(false)
 
     const navigate = useNavigate()
 
@@ -63,14 +67,19 @@ const Laporan = () => {
 
     const fetchData = async () => {
         try {
+            setIsLoading(true)
             const response = await axiosJWT.get(`${import.meta.env.VITE_BASEURL}/laporan/${tahun}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-            setDataPerBulan(response.data);
-            calculateTotals(response.data);
+            if(response) {
+                setIsLoading(false)
+                setDataPerBulan(response.data);
+                calculateTotals(response.data);
+            }
         } catch (error) {
+            setIsLoading(false)
             console.error('Error fetching data:', error);
         }
     };
@@ -173,44 +182,52 @@ const Laporan = () => {
                     <div className="total-tahunan" style={{ fontWeight: 'bold', fontSize: '15px', color: 'black', textAlign: 'center' }}>
                         Total Tahunan: ({totalTahunan})
                     </div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Jenis Surat</th>
-                                    <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Januari</th>
-                                    <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Februari</th>
-                                    <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Maret</th>
-                                    <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>April</th>
-                                    <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Mei</th>
-                                    <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Juni</th>
-                                    <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Juli</th>
-                                    <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Agustus</th>
-                                    <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>September</th>
-                                    <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Oktober</th>
-                                    <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>November</th>
-                                    <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Desember</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {Object.keys(dataPerBulan).map((bulan, index) => (
-                                    <tr key={index}>
-                                        <td style={{ color: 'black', textAlign: 'center', width: '200px' }}>{bulan}</td>
-                                        <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Januari'] || 0}</td>
-                                        <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Februari'] || 0}</td>
-                                        <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Maret'] || 0}</td>
-                                        <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['April'] || 0}</td>
-                                        <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Mei'] || 0}</td>
-                                        <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Juni'] || 0}</td>
-                                        <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Juli'] || 0}</td>
-                                        <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Agustus'] || 0}</td>
-                                        <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['September'] || 0}</td>
-                                        <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Oktober'] || 0}</td>
-                                        <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['November'] || 0}</td>
-                                        <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Desember'] || 0}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                    <div className='table-laporan'>
+                        {
+                            isLoading ? (
+                                <SpinnerLoader color={'black'} width={`150px`}/>
+                            ) : (
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Jenis Surat</th>
+                                            <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Januari</th>
+                                            <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Februari</th>
+                                            <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Maret</th>
+                                            <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>April</th>
+                                            <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Mei</th>
+                                            <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Juni</th>
+                                            <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Juli</th>
+                                            <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Agustus</th>
+                                            <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>September</th>
+                                            <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Oktober</th>
+                                            <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>November</th>
+                                            <th style={{ color: 'black', textAlign: 'center', lineHeight: '60px' }}>Desember</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {Object.keys(dataPerBulan).map((bulan, index) => (
+                                            <tr key={index}>
+                                                <td style={{ color: 'black', textAlign: 'center', width: '200px' }}>{bulan}</td>
+                                                <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Januari'] || 0}</td>
+                                                <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Februari'] || 0}</td>
+                                                <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Maret'] || 0}</td>
+                                                <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['April'] || 0}</td>
+                                                <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Mei'] || 0}</td>
+                                                <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Juni'] || 0}</td>
+                                                <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Juli'] || 0}</td>
+                                                <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Agustus'] || 0}</td>
+                                                <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['September'] || 0}</td>
+                                                <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Oktober'] || 0}</td>
+                                                <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['November'] || 0}</td>
+                                                <td style={{ color: 'black', textAlign: 'center', width: '90px', lineHeight: '50px' }}>{dataPerBulan[bulan]['Desember'] || 0}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            )
+                        }
+                    </div>
                     </div>
                 </div>
             </div>

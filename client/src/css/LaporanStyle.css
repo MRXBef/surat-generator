@@ -63,6 +63,14 @@
     overflow-x: auto; /* Untuk mendukung scrolling horizontal jika dibutuhkan */
 }
 
+.table-laporan {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
