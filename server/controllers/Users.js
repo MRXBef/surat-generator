@@ -81,14 +81,13 @@ export const Login = async(req, res) => {
 
 export const Logout = async(req, res) => {
     const { refreshToken } = req.cookies;
-    res.json({refresh_token: refreshToken})
     if (!refreshToken) {
         return res.status(401).json({ msg: "No refresh token provided" });
     }
 
     try {
         const user = await Users.findOne({ where: { refreshToken: refreshToken } });
-        if (!user) return res.status(204).end();
+        if (!user) return res.status(204)
         console.log(user)
 
         const userID = user.id;
