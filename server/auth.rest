@@ -1,21 +1,21 @@
-POST http://localhost:5000/register
+POST https://suket-mataram-timur-server.vercel.app/register
 Content-Type: application/json
 
 {
     "firstName": "admin",
-    "lastName": "1",
-    "email": "admin1@gmail.com",
+    "lastName": "2",
+    "email": "admin2@gmail.com",
     "password": "12345",
     "confPassword": "12345"
 } 
 
 ###
 
-POST http://localhost:5000/login
+POST https://suket-mataram-timur-server.vercel.app/login
 Content-Type: application/json
 
 {
-    "email" : "bayuadam@gmail.com",
+    "email" : "admin1@gmail.com",
     "password": "12345"
 }
 

@@ -43,7 +43,7 @@ try {
     console.log(error)
 }
 
-app.use(cors({credentials:true}))
+app.use(cors({credentials:true, origin: 'http://localhost:5173'}))
 app.use(cookieParser())
 app.use(json())
 app.use(Router)

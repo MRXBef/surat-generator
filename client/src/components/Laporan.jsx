@@ -26,7 +26,7 @@ const Laporan = () => {
 
     const refreshToken = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/token');
+            const response = await axios.get(`${import.meta.env.VITE_BASEURL}/token`);
             setToken(response.data.accessToken);
             const decoded = jwtDecode(response.data.accessToken);
             setName(decoded.username);
@@ -41,7 +41,7 @@ const Laporan = () => {
     axiosJWT.interceptors.request.use(async (config) => {
         const currentDate = new Date();
         if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('http://localhost:5000/token');
+            const response = await axios.get(`${import.meta.env.VITE_BASEURL}/token`);
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             setToken(response.data.accessToken);
             const decoded = jwtDecode(response.data.accessToken);
@@ -58,7 +58,7 @@ const Laporan = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axiosJWT.get(`http://localhost:5000/laporan/${tahun}`, {
+            const response = await axiosJWT.get(`${import.meta.env.VITE_BASEURL}/laporan/${tahun}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

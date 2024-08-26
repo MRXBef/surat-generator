@@ -21,7 +21,7 @@ const LoginPage = () => {
 
     const checkIsLoggedIn = async() => {
         try {
-            const response = await axios.get('http://localhost:5000/login')
+            const response = await axios.get(`${import.meta.env.VITE_BASEURL}/login`)
             if(response.status == 200) navigate('/dashboard')
         } catch (error) {
             console.log(error.response.data.msg)
@@ -32,7 +32,7 @@ const LoginPage = () => {
         e.preventDefault()
 
         try {
-            const response = await axios.post('http://localhost:5000/login',{
+            const response = await axios.post(`${import.meta.env.VITE_BASEURL}/login`,{
                 email: email,
                 password: password
             })

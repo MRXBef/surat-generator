@@ -48,7 +48,7 @@ const SideBar = ({toggleSidebar, name}) => {
     }
     const handleLogout = async() => {
         try {
-            const response = await axios.delete('http://localhost:5000/logout')
+            const response = await axios.delete(`${import.meta.env.VITE_BASEURL}/logout`)
             if(response) {
                 navigate('/')
             }
