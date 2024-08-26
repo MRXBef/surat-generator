@@ -87,7 +87,10 @@ export const Logout = async(req, res) => {
         await Users.update({refreshToken: null}, {
             where: {id: userID}
         })
-        res.clearCookie('refreshToken').status(200).json({msg: "Logout!"})
+        res.clearCookie('refreshToken', {
+            secure: true,
+            httpOnly: true
+        }).status(200).json({msg: "Logout!"})
     } catch (error) {
         console.log(error)
         res.status(500).json({msg: "Internal server error!"})
