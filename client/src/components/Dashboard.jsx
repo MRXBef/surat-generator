@@ -93,7 +93,9 @@ const Dashboard = () => {
 
     const refreshToken = async() => {
         try {
-            const response = await axios.get(`${import.meta.env.VITE_BASEURL}token`)
+            const response = await axios.get(`${import.meta.env.VITE_BASEURL}/token`, {
+                withCredentials: true
+            })
             setToken(response.data.accessToken)
             const decoded = jwtDecode(response.data.accessToken)
             setName(decoded.username)

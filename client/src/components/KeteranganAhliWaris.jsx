@@ -88,7 +88,7 @@ useEffect(() => {
   
   const refreshToken = async() => {
   try {
-      const response = await axios.get('http://localhost:5000/token')
+      const response = await axios.get(`${import.meta.env.VITE_BASEURL}/token`)
       setToken(response.data.accessToken)
       const decoded = jwtDecode(response.data.accessToken)
       setExpire(decoded.exp)
@@ -103,7 +103,7 @@ useEffect(() => {
   axiosJWT.interceptors.request.use(async(config) => {
     const currentDate = new Date()
     if(expire * 1000 < currentDate.getTime()) {
-        const response = await axios.get('http://localhost:5000/token')
+        const response = await axios.get(`${import.meta.env.VITE_BASEURL}/token`)
         config.headers.Authorization = `Bearer ${response.data.accessToken}`
         setToken(response.data.accessToken)
         const decoded = jwtDecode(response.data.accessToken)
@@ -117,7 +117,7 @@ useEffect(() => {
   const handleSaveToDb = async() => {
     try {
       const response = await axiosJWT.post(
-        'http://localhost:5000/surat/ahliwaris',
+        `${import.meta.env.VITE_BASEURL}/surat/ahliwaris`,
         {
         pewaris: `${nomorSuratIndex || "-"},${namaPewaris}`,
         jumlah_orang: parseInt(jumlahOrang),
