@@ -69,6 +69,7 @@ export const Login = async(req, res) => {
             httpOnly: true,
             secure: true,
             maxAge: 24 * 60 * 60 * 1000,
+            sameSite: 'lax'
         })
         res.json({accessToken})
     } catch (error) {
@@ -78,25 +79,27 @@ export const Login = async(req, res) => {
 }
 
 export const Logout = async(req, res) => {
-    const {refreshToken} = req.cookies
+    const { refreshToken } = req.cookies;
+    if (!refreshToken) return res.status(204).end(); // Tidak ada refreshToken di cookies
+
     try {
-        const user = await Users.findOne({where: {refreshToken: refreshToken}})
-        if(!user) return res.status(204)
-    
-        const userID = user.id
-        await Users.update({refreshToken: null}, {
-            where: {id: userID}
-        })
+        const user = await Users.findOne({ where: { refreshToken: refreshToken } });
+        if (!user) return res.status(204).end(); // Jika tidak ada user yang cocok, kirimkan status 204
+
+        const userID = user.id;
+        await Users.update({ refreshToken: null }, { where: { id: userID } });
+
         res.clearCookie('refreshToken', {
             httpOnly: true,
-            secure: true,
-            maxAge: 24 * 60 * 60 * 1000,
-        }).status(200).json({msg: "Logout!"})
+            secure: true, // Pastikan ini sesuai dengan pengaturan saat membuat cookie
+            sameSite: 'lax', // Sesuaikan dengan pengaturan saat membuat cookie
+        }).status(200).json({ msg: "Logout successful!" });
     } catch (error) {
-        console.log(error)
-        res.status(500).json({msg: "Internal server error!"})
+        console.log(error);
+        res.status(500).json({ msg: "Internal server error!" });
     }
 }
+
 
 export const isUserLoggedIn = async(req, res) => {
     const cookie = req.cookies.refreshToken
