@@ -7,6 +7,7 @@ import { cilLink } from '@coreui/icons';
 import XLSX from 'xlsx/dist/xlsx.full.min.js';
 import FileSaver from 'file-saver';
 import '../css/LaporanStyle.css';
+import { useNavigate } from 'react-router-dom';
 
 const Laporan = () => {
     const [name, setName] = useState('');
@@ -20,6 +21,8 @@ const Laporan = () => {
     const [totalPerBulan, setTotalPerBulan] = useState({});
     const [totalTahunan, setTotalTahunan] = useState(0);
 
+    const navigate = useNavigate()
+
     useEffect(() => {
         refreshToken();
     }, []);
@@ -32,8 +35,10 @@ const Laporan = () => {
             setName(decoded.username);
             setExpire(decoded.exp);
         } catch (error) {
-            console.error('Error refreshing token:', error);
-            // Handle error here, e.g., redirect to login page
+            if(error.response) {
+                console.error('Error refreshing token:', error);
+                navigate('/')
+            }
         }
     };
 
