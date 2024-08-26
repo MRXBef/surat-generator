@@ -45,6 +45,7 @@
     gap: 20px;
 }
 
+
 .loginLogo {
     color: white;
 }
@@ -60,6 +61,13 @@
 .loginForm {
     width: 65%;
     padding: 10%;
+}
+
+.shield-login {
+    position: absolute;
+    margin-left: 27%;
+    margin-top: -4%;
+    color: darkorange;
 }
 
 .custom-input {
@@ -87,5 +95,9 @@
     }
     .loginForm h1 {
         font-size: 14px;
+    }
+
+    .shield-login {
+        margin-left: 60%;
     }
 }
