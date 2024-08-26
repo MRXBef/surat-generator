@@ -65,3 +65,21 @@
 .custom-input {
     background-color: #ffff;
 }
+
+@media (max-width: 600px) {
+    .loginBox{
+        flex-direction: column;
+        height: auto;
+    }
+
+    .loginLogo{
+        width: 100%;
+        padding: 20px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .loginForm{
+        width: 100%;
+        margin-top: 20px;
+    }
+}
