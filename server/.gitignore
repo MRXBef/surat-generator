@@ -1,1 +1,26 @@
+# Node modules
+node_modules/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
 .env
+
+# Directory for test coverage output
+coverage/
+
+# Logs
+*.log
+
+# Runtime data 
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# IDE files
+.idea/
+.vscode/
