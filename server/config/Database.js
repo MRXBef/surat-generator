@@ -1,9 +1,20 @@
-import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize"
+import dotenv from 'dotenv'
+import pg from 'pg'
 
-const db = new Sequelize('surat', 'root', '', {
-    host: "localhost",
-    dialect: 'mysql',
-    timezone:"+08:00"
+dotenv.config()
+
+const db = new Sequelize(process.env.PSQL, {
+    dialect: "postgres",
+    protocol: "postgres",
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthrorized: false
+        }
+    },
+    logging: false,
+    dialectModule: pg
 })
 
 export default db
