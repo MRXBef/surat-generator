@@ -43,7 +43,10 @@ try {
     console.log(error)
 }
 
-app.use(cors({credentials:true, origin: 'https://suket-mataramtimur.vercel.app'}))
+app.use(cors({
+    credentials:true, 
+    // origin: 'https://suket-mataramtimur.vercel.app'
+}))
 app.use(cookieParser())
 app.use(json())
 app.use(Router)
