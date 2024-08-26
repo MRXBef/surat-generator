@@ -68,8 +68,8 @@ export const Login = async(req, res) => {
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             secure: true, // Pastikan ini sesuai dengan pengaturan HTTPS
-            sameSite: 'none', // 'lax' untuk mempermudah akses cookie
-            path: '/', // Pastikan cookie tersedia di seluruh aplikasi
+            sameSite: 'none',
+            path: '/',
             maxAge: 24 * 60 * 60 * 1000, // Masa berlaku cookie (1 hari)
         });
         res.json({accessToken})
