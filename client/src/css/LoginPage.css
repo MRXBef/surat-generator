@@ -85,8 +85,7 @@
     .loginLogo{
         width: 100%;
         padding: 20px;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        border-radius: 10px;
         font-size: 14px;
     }
     .loginForm{
