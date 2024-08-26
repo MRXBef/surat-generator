@@ -37,6 +37,8 @@ try {
     // await db.sync(campuran)
     // await db.sync(taksiranTanah)
     // await db.sync(rekomendasiBbm)
+
+    await db.sync()
 } catch (error) {
     console.log(error)
 }

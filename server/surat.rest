@@ -1,9 +1,10 @@
-POST http://localhost:5000/surat/kematian
+POST http://localhost:5000/surat/campuran
 Content-Type: application/json
 
 {
    "data_diri" : "test", 
    "surat_pengantar" : "test", 
+   "pernyataan" : "test", 
    "tujuan" : "test", 
    "yang_ttd" : "test"
 }
