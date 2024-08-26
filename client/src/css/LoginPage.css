@@ -70,6 +70,7 @@
     .loginBox{
         flex-direction: column;
         height: auto;
+        font-size: 14px;
     }
 
     .loginLogo{
@@ -77,9 +78,13 @@
         padding: 20px;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
+        font-size: 14px;
     }
     .loginForm{
         width: 100%;
         margin-top: 20px;
+    }
+    .loginForm h1 {
+        font-size: 14px;
     }
 }

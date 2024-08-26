@@ -51,7 +51,7 @@ const LoginPage = () => {
             </div>
             <div className="loginForm">
                 <i style={{position: 'absolute', marginLeft: '27%', marginTop: '-4%', color: 'darkorange'}}><CIcon icon={cilShieldAlt}/></i>
-                <h1 style={{color: 'black', position: 'absolute', marginTop: '-30px', fontWeight: 'bold', fontSize: '20px'}}>Selamat Datang...</h1>
+                <h1 style={{color: 'black', position: 'absolute', marginTop: '-30px', fontWeight: 'bold'}}>Selamat Datang...</h1>
                 <form action="">
                     <div className="field">
                         <label className="label has-text-black">Email</label>
