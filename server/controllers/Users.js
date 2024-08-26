@@ -86,6 +86,7 @@ export const Logout = async(req, res) => {
     try {
         const user = await Users.findOne({ where: { refreshToken: refreshToken } });
         if (!user) return res.status(204).end();
+        console.log(user)
 
         const userID = user.id;
         await Users.update({ refreshToken: null }, { where: { id: userID } });
