@@ -80,19 +80,19 @@ export const Login = async(req, res) => {
 
 export const Logout = async(req, res) => {
     const { refreshToken } = req.cookies;
-    if (!refreshToken) return res.status(204).end(); // Tidak ada refreshToken di cookies
+    if (!refreshToken) return res.status(204).end();
 
     try {
         const user = await Users.findOne({ where: { refreshToken: refreshToken } });
-        if (!user) return res.status(204).end(); // Jika tidak ada user yang cocok, kirimkan status 204
+        if (!user) return res.status(204).end();
 
         const userID = user.id;
         await Users.update({ refreshToken: null }, { where: { id: userID } });
 
         res.clearCookie('refreshToken', {
             httpOnly: true,
-            secure: true, // Pastikan ini sesuai dengan pengaturan saat membuat cookie
-            sameSite: 'lax', // Sesuaikan dengan pengaturan saat membuat cookie
+            secure: true,
+            sameSite: 'lax'
         }).status(200).json({ msg: "Logout successful!" });
     } catch (error) {
         console.log(error);
