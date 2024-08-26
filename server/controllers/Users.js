@@ -104,11 +104,11 @@ export const Logout = async(req, res) => {
 
 
 export const isUserLoggedIn = async(req, res) => {
-    const cookie = req.cookies.refreshToken
-    if(cookie == undefined) return res.sendStatus(403)
+    const {refreshToken} = req.cookies
+    if(refreshToken == undefined) return res.sendStatus(403)
     try {
         const user = await Users.findOne({
-            where: {refreshToken : cookie}
+            where: {refreshToken : refreshToken}
         })
         if(!user) return res.status(403).json({msg: "User not found"})
         res.sendStatus(200)
