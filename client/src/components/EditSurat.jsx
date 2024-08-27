@@ -59,10 +59,6 @@ const EditSurat = () => {
         return Promise.reject(error);
     });
 
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
-    };
-
     const handleEditClicked = (id, name) => {
         setHideFormAddStock('')
         setSuratName(name)
@@ -86,7 +82,7 @@ const EditSurat = () => {
 
     return (
         <div className='edit-container'>
-            <SideBar toggleSidebar={toggleSidebar} name={name} />
+            <SideBar name={name} />
             <div className="edit-content">
                 <div className={`edit-menu ${isSidebarOpen ? 'content-expanded' : 'content-collapsed'}`}>
                     <div className="header-menu">

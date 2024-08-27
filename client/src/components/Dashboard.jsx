@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { SidebarContext } from '../context/SidebarContext';
 import '../css/DashboardStyle.css'
 import mataram from '../assets/img/mataram.png'
 import SideBar from './SideBar';
@@ -26,7 +26,7 @@ const Dashboard = () => {
     const [expire, setExpire] = useState('')
 
     const [activeMenu, setActiveMenu] = useState('1')
-    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+    const {isSidebarOpen, setIsSidebarOpen} = useContext(SidebarContext);
     const [form, setForm] = useState(<KeteranganUsaha/>)
 
     const navigate = useNavigate()
@@ -87,10 +87,6 @@ const Dashboard = () => {
         }
     }
 
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
-      };
-
     const refreshToken = async() => {
         try {
             const response = await axios.get(`${import.meta.env.VITE_BASEURL}/token`, {
@@ -110,7 +106,7 @@ const Dashboard = () => {
 
   return (
     <div className='dashboard-container'>
-        <SideBar toggleSidebar={toggleSidebar} name={name}/>
+        <SideBar name={name}/>
         <div className="dashboard-content">
             <div className={`dashboard-menu ${isSidebarOpen ? 'content-expanded' : 'content-collapsed'}`}>
                 <i style={{position: 'absolute', marginLeft: '-30px', marginTop: '-160px', color: 'black'}}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import SideBar from './SideBar';
 import axios from 'axios';
 import {jwtDecode} from 'jwt-decode';
@@ -9,12 +9,13 @@ import FileSaver from 'file-saver';
 import '../css/LaporanStyle.css';
 import { useNavigate } from 'react-router-dom';
 import SpinnerLoader from './SpinnerLoader';
+import { SidebarContext } from '../context/SidebarContext';
 
 const Laporan = () => {
     const [name, setName] = useState('');
     const [expire, setExpire] = useState('');
     const [token, setToken] = useState('');
-    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+    const {isSidebarOpen, setIsSidebarOpen} = useContext(SidebarContext);
 
     const tahunSekarang = new Date().getFullYear();
     const [tahun, setTahun] = useState(tahunSekarang);
@@ -140,13 +141,9 @@ const Laporan = () => {
         FileSaver.saveAs(excelBlob, 'laporan.xlsx');
     };
 
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
-    };
-
     return (
         <div className='laporan-container'>
-            <SideBar toggleSidebar={toggleSidebar} name={name} />
+            <SideBar name={name}/>
             <div className="laporan-content">
                 <div className={`laporan-menu ${isSidebarOpen ? 'content-expanded' : 'content-collapsed'}`}>
                     <div className="pilih-waktu">

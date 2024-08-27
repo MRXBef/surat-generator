@@ -1,11 +1,12 @@
 import CIcon from '@coreui/icons-react'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import '../css/SidebarStyle.css'
 import {cilUser, cilPlus, cilAccountLogout, cilNotes, cilGrid, cilArrowThickFromRight, cilArrowThickFromLeft} from '@coreui/icons';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { SidebarContext } from '../context/SidebarContext';
 
-const SideBar = ({toggleSidebar, name}) => {
+const SideBar = ({name}) => {
     const [sideBar, setSideBar] = useState('side-bar')
     const [sambutan, setSambutan] = useState('')
     const [surat, setSurat] = useState('Buat Surat')
@@ -15,16 +16,39 @@ const SideBar = ({toggleSidebar, name}) => {
     const [open, setOpen] = useState('open')
     const [close, setClose] = useState('close-close')
     const [activePage, setActivePage] = useState('/dashboard')
-
+    const {isSidebarOpen, setIsSidebarOpen} = useContext(SidebarContext)
+    
     useEffect(() => {
         setSambutan(name)
         handlePath(location.pathname)
+        console.log(isSidebarOpen)
+        if(!isSidebarOpen) {
+            setIsSidebarOpen(!isSidebarOpen)
+            setClose('close-close')
+            setSambutan(name)
+            setSurat('Buat Surat')
+            setEditSurat('List Surat')
+            setLaporan('Laporan')
+            setLogout('Keluar')
+            setSideBar('side-bar')
+            setOpen('open')
+        }else {
+            setIsSidebarOpen(!isSidebarOpen)
+            setOpen('close-open')
+            setSambutan('')
+            setSurat('')
+            setEditSurat('')
+            setLaporan('')
+            setLogout('')
+            setSideBar('side-bar-close')
+            setClose('close')
+        }
     }, [name, location.pathname])
 
     const navigate = useNavigate()
 
     const handleIsOpen = () => {
-        toggleSidebar()
+        setIsSidebarOpen(false)
         setOpen('close-open')
         setSambutan('')
         setSurat('')
@@ -36,7 +60,7 @@ const SideBar = ({toggleSidebar, name}) => {
     }
 
     const handleClose = () => {
-        toggleSidebar()
+        setIsSidebarOpen(true)
         setClose('close-close')
         setSambutan(name)
         setSurat('Buat Surat')
@@ -88,14 +112,6 @@ const SideBar = ({toggleSidebar, name}) => {
                     <CIcon icon={cilPlus} />
                 </i>
                 <p>{surat}</p>
-            </div>
-        </div>
-        <div className={`menuBox ${activePage === '/editsurat' ? 'active' : '' }`} onClick={() => handleToLocation('/editsurat')}>
-            <div>
-                <i className=''>
-                    <CIcon icon={cilNotes} />
-                </i>
-                <p>{editSurat}</p>
             </div>
         </div>
         <div className={`menuBox ${activePage === '/laporan' ? 'active' : '' }`} onClick={() => handleToLocation('/laporan')}>
