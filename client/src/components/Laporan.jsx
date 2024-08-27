@@ -147,7 +147,18 @@ const Laporan = () => {
             <div className="laporan-content">
                 <div className={`laporan-menu ${isSidebarOpen ? 'content-expanded' : 'content-collapsed'}`}>
                     <div className="pilih-waktu">
-                        <i style={{ position: 'absolute', right: '100px', transform: 'scale(1.5,1.5)', color: 'black' }}><CIcon icon={cilLink} />{tahun}</i>
+                        <i style={{ position: 'absolute', right: '100px', transform: 'scale(1.5,1.5)', color: 'black' }}>
+                            {
+                                isLoading ? (
+                                    <SpinnerLoader color={'black'}/>
+                                ) : (
+                                    <div>
+                                        <CIcon icon={cilLink} />
+                                        {tahun}
+                                    </div>
+                                )
+                            }
+                        </i>
                         <form onSubmit={(e) => { e.preventDefault(); fetchData(); }} style={{ display: 'flex', gap: '20px' }}>
                             <div className="control select" style={{ width: '200px' }}>
                                 <select
@@ -177,12 +188,13 @@ const Laporan = () => {
                     </div>
                     <div className="table-container">
                     <div className="total-tahunan" style={{ fontWeight: 'bold', fontSize: '15px', color: 'black', textAlign: 'center' }}>
-                        Total Tahunan: ({totalTahunan})
+                        Total Tahunan: {isLoading ? <SpinnerLoader color={'black'}/> : `(${totalTahunan})`}
                     </div>
                     <div className='table-laporan'>
                         {
                             isLoading ? (
-                                <SpinnerLoader color={'black'} width={`150px`}/>
+                                // <SpinnerLoader color={'black'} width={`100px`}/>
+                                <p></p>
                             ) : (
                                 <table>
                                     <thead>
