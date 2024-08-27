@@ -23,6 +23,9 @@ const Laporan = () => {
     const [totalPerBulan, setTotalPerBulan] = useState({});
     const [totalTahunan, setTotalTahunan] = useState(0);
 
+    const [isNoLoggedIn, setIsNoLoggedIn] = useState(false)
+    const [authCheck, setAuthCheck] = useState(true)
+
     //spinner
     const [isLoading, setIsLoading] = useState(false)
 
@@ -39,11 +42,15 @@ const Laporan = () => {
             const decoded = jwtDecode(response.data.accessToken);
             setName(decoded.username);
             setExpire(decoded.exp);
+            setIsNoLoggedIn(false)
         } catch (error) {
             if(error.response) {
                 console.error('Error refreshing token:', error);
+                setIsNoLoggedIn(true)
                 navigate('/')
             }
+        } finally {
+            setAuthCheck(false)
         }
     };
 
@@ -140,6 +147,28 @@ const Laporan = () => {
 
         FileSaver.saveAs(excelBlob, 'laporan.xlsx');
     };
+
+
+    if(authCheck) {
+        return (
+            <div style={{
+                width: '100%',
+                height: '100vh',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}>
+                <div style={{display: 'none'}}>
+                    <SideBar name={name}/>
+                </div>
+                <SpinnerLoader color={'white'} width={'100px'}/>
+            </div>
+        )
+    }
+
+    if(isNoLoggedIn){
+        return null
+    }
 
     return (
         <div className='laporan-container'>

@@ -15,6 +15,9 @@ const LoginPage = () => {
     const [msg, setMsg] = useState('')
     const [isLoading, setIsLoading] = useState(false)
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [authCheck, setAuthCheck] = useState(true)
+
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -24,9 +27,15 @@ const LoginPage = () => {
     const checkIsLoggedIn = async() => {
         try {
             const response = await axios.get(`${import.meta.env.VITE_BASEURL}/login`)
-            if(response.status == 200) navigate('/dashboard')
+            if(response.status == 200) {
+                setIsLoggedIn(true)
+                navigate('/dashboard')
+            } 
         } catch (error) {
             console.log(error.response.data.msg)
+            setIsLoggedIn(false)
+        } finally {
+            setAuthCheck(false)
         }
     }
 
@@ -47,6 +56,24 @@ const LoginPage = () => {
             setIsLoading(false)
             setMsg(error.response.data.msg)
         }
+    }
+
+    if(authCheck){
+        return (
+            <div style={{
+                width: '100%',
+                height: '100vh',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}>
+                <SpinnerLoader color={'white'} width={'100px'}/>
+            </div>
+        )
+    }
+
+    if(isLoggedIn) {
+        return null
     }
 
   return (

@@ -9,7 +9,7 @@ const SpinnerLoader = ({color, width}) => {
         )
     } else {
         return (
-            <img src={whiteSpinner}/>
+            <img src={whiteSpinner} style={{width: width}}/>
         )
     }
 }

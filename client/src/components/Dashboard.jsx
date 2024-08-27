@@ -19,6 +19,7 @@ import KeteranganAhliWaris from './KeteranganAhliWaris';
 import KeteranganCampuran from './KeteranganCampuran';
 import KeteranganTanah from './KeteranganTanah';
 import KeteranganBbm from './KeteranganBbm';
+import SpinnerLoader from './SpinnerLoader';
 
 const Dashboard = () => {
     const [name, setName] = useState('')
@@ -28,6 +29,9 @@ const Dashboard = () => {
     const [activeMenu, setActiveMenu] = useState('1')
     const {isSidebarOpen, setIsSidebarOpen} = useContext(SidebarContext);
     const [form, setForm] = useState(<KeteranganUsaha/>)
+
+    const [isNoLoggedIn, setIsNoLoggedIn] = useState(false)
+    const [authCheck, setAuthCheck] = useState(true)
 
     const navigate = useNavigate()
 
@@ -96,11 +100,36 @@ const Dashboard = () => {
             const decoded = jwtDecode(response.data.accessToken)
             setName(decoded.username)
             setExpire(decoded.exp)
+            setIsNoLoggedIn(false)
         } catch (error) {
             if(error.response){
+                setIsNoLoggedIn(true)
                 navigate('/')
             }
+        } finally {
+            setAuthCheck(false)
         }
+    }
+
+    if(authCheck) {
+        return (
+            <div style={{
+                width: '100%',
+                height: '100vh',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}>
+                <div style={{display: 'none'}}>
+                    <SideBar name={name}/>
+                </div>
+                <SpinnerLoader color={'white'} width={'100px'}/>
+            </div>
+        )
+    }
+
+    if(isNoLoggedIn){
+        return null
     }
 
 
