@@ -21,6 +21,7 @@ const LoginPage = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
+        document.title = 'Login'
         checkIsLoggedIn()
     }, [])
 

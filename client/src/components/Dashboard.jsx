@@ -36,6 +36,7 @@ const Dashboard = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
+        document.title = 'Dashboard'
         refreshToken()
     }, [])
 

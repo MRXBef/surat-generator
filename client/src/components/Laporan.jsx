@@ -32,6 +32,7 @@ const Laporan = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
+        document.title = 'Laporan'
         refreshToken();
     }, []);
 
