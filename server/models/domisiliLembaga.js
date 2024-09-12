@@ -1,6 +1,3 @@
-import db from "../config/Database.js";
-import { DataTypes } from "sequelize";
-
 const domisiliLembaga = db.define(
     'domisiliLembaga',
     {   
@@ -20,7 +17,10 @@ const domisiliLembaga = db.define(
             type: DataTypes.STRING(255),
             allowNull: false
         },
+    },
+    {
+        freezeTableName: true // Disables plural table names
     }
 )
 
-export default domisiliLembaga
+export default domisiliLembaga;
