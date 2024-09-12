@@ -145,7 +145,6 @@ export const createTidakMampu = async(req, res) => {
 
 export const createTerdaftar = async(req, res) => {
     const {data_diri, surat_pengantar, tujuan, yang_ttd} =req.body
-    console.log(req.body)
     if(!data_diri || !surat_pengantar || !yang_ttd){
         return res.status(400).json({msg: "Semua data harus diisikan!"})
     }
@@ -300,6 +299,7 @@ export const findDataByYears = async (req, res) => {
         campuran: 'Surat Keterangan Campuran',
         taksiranTanah: 'Surat Keterangan Tanah',
         rekomendasiBbm: 'Surat Keterangan Bbm',
+        terdaftar: 'Surat Keterangan Terdaftar',
     };
 
     try {
@@ -315,6 +315,7 @@ export const findDataByYears = async (req, res) => {
             campuran,
             taksiranTanah,
             rekomendasiBbm,
+            terdaftar
         };
 
         const dataPerBulan = Object.keys(models).reduce((acc, modelName) => {
