@@ -2,7 +2,7 @@ import db from "../config/Database.js";
 import { DataTypes } from "sequelize";
 
 const domisiliLembaga = db.define(
-    'domisiliLembaga',
+    'domisililembaga',
     {   
         data_diri: {
             type: DataTypes.STRING(255),
