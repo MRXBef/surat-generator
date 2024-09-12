@@ -151,77 +151,77 @@ const handleSaveToDb = async() => {
                     <Text style={StyleSheet.create({textAlign: 'center', fontSize: 15})}>PEMERINTAH KOTA MATARAM</Text>
                     <Text style={StyleSheet.create({textAlign: 'center', fontSize: 15})}>KECAMATAN MATARAM</Text>
                     <Text style={StyleSheet.create({textAlign: 'center', fontSize: 15})}>KELURAHAN MATARAM TIMUR</Text>
-                    <Text style={StyleSheet.create({textAlign: 'center', fontSize: 10})}>Jalan Seruling No. 9 Kr. Bedil Mataram Telp.  (0370) 622435 Kode Pos 83121</Text>
+                    <Text style={StyleSheet.create({textAlign: 'center', fontSize: 12})}>Jalan Seruling No. 9 Kr. Bedil Mataram Telp.  (0370) 622435 Kode Pos 83121</Text>
                 </View>
             </View>
             <View style={StyleSheet.create({width: '100%', borderBottom: '1px solid black', marginTop: 1})}></View>
     
           <Text style={StyleSheet.create({textAlign: 'center', textDecoration: 'underline', fontSize: 15, marginTop: 10})}>SURAT PENGANTAR KELAKUAN BAIK</Text>
-          <Text style={StyleSheet.create({textAlign: 'center', fontSize: 10})}>Nomor : {nomorSuratIndex.toUpperCase()}</Text>
-          <Text style={StyleSheet.create({marginTop: 30, fontSize: 10, textIndent: 50})}>Yang bertanda tangan dibawah ini Lurah Mataram Timur, Kecamatan Mataram, menerangkan dengan sebenarnya bahwa :</Text>
+          <Text style={StyleSheet.create({textAlign: 'center', fontSize: 12})}>Nomor : {nomorSuratIndex.toUpperCase()}</Text>
+          <Text style={StyleSheet.create({marginTop: 30, fontSize: 12, textIndent: 50})}>Yang bertanda tangan dibawah ini Lurah Mataram Timur, Kecamatan Mataram, menerangkan dengan sebenarnya bahwa :</Text>
           <View style={StyleSheet.create({marginTop: 20, display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 10})}>Nama</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 10, position: 'absolute', width: 200, left: 80})}>: {toUpperCaseFirstStr(nama)}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Nama</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(nama)}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 10})}>NIK</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 10, position: 'absolute', width: 200, left: 80})}>: {nik}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>NIK</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {nik}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 10})}>Tempat/tgl lahir</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 10, position: 'absolute', width: 200, left: 80})}>: {toUpperCaseFirstStr(tempatLahir)}, {ttl.split('-').reverse().join('-')}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Tempat/tgl lahir</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(tempatLahir)}, {ttl.split('-').reverse().join('-')}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 10})}>Jenis Kelamin</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 10, position: 'absolute', width: 200, left: 80})}>: {jk}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Jenis Kelamin</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {jk}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 10})}>Status</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 10, position: 'absolute', width: 200, left: 80})}>: {status}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Status</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {status}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 10})}>Agama</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 10, position: 'absolute', width: 200, left: 80})}>: {agama}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Agama</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {agama}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 10})}>Kewarganegaraan</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 10, position: 'absolute', width: 200, left: 80})}>: {kewarganegaraan}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Kewarganegaraan</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {kewarganegaraan}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 10})}>Pekerjaan</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 10, position: 'absolute', width: 200, left: 80})}>: {toUpperCaseFirstStr(pekerjaan)}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Pekerjaan</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(pekerjaan)}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 10})}>Alamat</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 10, position: 'absolute', width: 200, left: 80})}>: {toUpperCaseFirstStr(alamat)}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Alamat</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(alamat)}</Text>
           </View>
     
-          <Text style={StyleSheet.create({fontSize: 10, textIndent: 50, marginTop: 30})}>Berdasarkan surat pengantar dari {dari} {toUpperCaseFirstStr(lingkungan)} Nomor : {nomorSurat} tanggal {tanggalSaatIni}, menerangkan dengan sebenarnya Bahwa :</Text>
-    
-          <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', gap: 5, marginTop: 5})}>
-                <Text style={StyleSheet.create({fontSize: 10})}>1. </Text>
-                <Text style={StyleSheet.create({fontSize: 10})}>Memang benar yang namanya tersebut diatas adalah penduduk yang bertempat tinggal di wilayah kami yaitu Lingkungan {toUpperCaseFirstStr(lingkungan)} Kelurahan Mataram Timur Kecamatan Mataram. </Text>
-          </View>
+          <Text style={StyleSheet.create({fontSize: 12, textIndent: 50, marginTop: 30})}>Berdasarkan surat pengantar dari {dari} {toUpperCaseFirstStr(lingkungan)} Nomor : {nomorSurat} tanggal {tanggalSaatIni}, menerangkan dengan sebenarnya Bahwa :</Text>
     
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', gap: 5, marginTop: 5})}>
-                <Text style={StyleSheet.create({fontSize: 10})}>2. </Text>
-                <Text style={StyleSheet.create({fontSize: 10})}>Yang bersangkutan memang benar tidak pernah tersangkut dalam Urusan Kepolisian maupun Tindak Pidana lainnya. </Text>
+                <Text style={StyleSheet.create({fontSize: 12})}>1. </Text>
+                <Text style={StyleSheet.create({fontSize: 12})}>Memang benar yang namanya tersebut diatas adalah penduduk yang bertempat tinggal di wilayah kami yaitu Lingkungan {toUpperCaseFirstStr(lingkungan)} Kelurahan Mataram Timur Kecamatan Mataram. </Text>
           </View>
     
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', gap: 5, marginTop: 5})}>
-                <Text style={StyleSheet.create({fontSize: 10})}>3. </Text>
-                <Text style={StyleSheet.create({fontSize: 10})}>Surat keterangan ini diberikan kepada yang bersangkutan untuk keperluan {keperluan.toUpperCase()}, dan SURAT KETERANGAN INI DIGUNAKAN UNTUK SATU KALI KEPERLUAN.</Text>
+                <Text style={StyleSheet.create({fontSize: 12})}>2. </Text>
+                <Text style={StyleSheet.create({fontSize: 12})}>Yang bersangkutan memang benar tidak pernah tersangkut dalam Urusan Kepolisian maupun Tindak Pidana lainnya. </Text>
           </View>
     
-          <Text style={StyleSheet.create({marginTop: 30, fontSize: 10, textIndent: 50})}>Demikian surat Pengantar Kelakuan Baik ini di buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya.</Text>
+          <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', gap: 5, marginTop: 5})}>
+                <Text style={StyleSheet.create({fontSize: 12})}>3. </Text>
+                <Text style={StyleSheet.create({fontSize: 12})}>Surat keterangan ini diberikan kepada yang bersangkutan untuk keperluan {keperluan.toUpperCase()}, dan SURAT KETERANGAN INI DIGUNAKAN UNTUK SATU KALI KEPERLUAN.</Text>
+          </View>
+    
+          <Text style={StyleSheet.create({marginTop: 30, fontSize: 12, textIndent: 50})}>Demikian surat Pengantar Kelakuan Baik ini di buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya.</Text>
     
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginLeft: 300, marginTop: 30})}>
-              <Text style={StyleSheet.create({fontSize: 10})}>Mataram, {tanggalSaatIni}</Text>
-              <Text style={StyleSheet.create({fontSize: 10})}>a.n Camat Mataram,</Text>
-              <Text style={StyleSheet.create({fontSize: 10})}>{toUpperCaseFirstStr(role)}</Text>
-              <Text style={StyleSheet.create({fontSize: 10, marginTop: 75, fontWeight: 'bold', textDecoration: 'underline'})}>{namaTtd.toUpperCase()}</Text>
-              <Text style={StyleSheet.create({fontSize: 10, fontWeight: 'bold', })}>{toUpperCaseFirstStr(golongan)}</Text>
-              <Text style={StyleSheet.create({fontSize: 10, textAlign: 'center'})}>NIP. {nip}</Text>
+              <Text style={StyleSheet.create({fontSize: 12})}>Mataram, {tanggalSaatIni}</Text>
+              <Text style={StyleSheet.create({fontSize: 12})}>a.n Camat Mataram,</Text>
+              <Text style={StyleSheet.create({fontSize: 12})}>{toUpperCaseFirstStr(role)}</Text>
+              <Text style={StyleSheet.create({fontSize: 12, marginTop: 75, fontWeight: 'bold', textDecoration: 'underline'})}>{namaTtd.toUpperCase()}</Text>
+              <Text style={StyleSheet.create({fontSize: 12, fontWeight: 'bold', })}>{toUpperCaseFirstStr(golongan)}</Text>
+              <Text style={StyleSheet.create({fontSize: 12, textAlign: 'center'})}>NIP. {nip}</Text>
           </View>
     
         </Page>

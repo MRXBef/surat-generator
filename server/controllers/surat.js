@@ -12,6 +12,7 @@ import campuran from "../models/campuranModels.js"
 import taksiranTanah from "../models/taksiranTanah.js"
 import rekomendasiBbm from "../models/rekomendasiBbm.js"
 import terdaftar from "../models/terdaftarModels.js"
+import domisiliLembaga from "../models/domisiliLembaga.js"
 
 export const createKematian = async(req, res) => {
     const {data_diri, surat_pengantar, tujuan, yang_ttd} =req.body
@@ -151,6 +152,27 @@ export const createTerdaftar = async(req, res) => {
 
     try {
         await terdaftar.create({
+            data_diri: data_diri,
+            surat_pengantar: surat_pengantar,
+            tujuan: tujuan,
+            yang_ttd: yang_ttd
+        })
+        res.status(200).json({msg: "Surat berhasil diupload!"})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: 'Terjadi kesalahan dalam server' });
+
+    }
+}
+
+export const createDomisiliLembaga = async(req, res) => {
+    const {data_diri, surat_pengantar, tujuan, yang_ttd} =req.body
+    if(!data_diri || !surat_pengantar || !yang_ttd){
+        return res.status(400).json({msg: "Semua data harus diisikan!"})
+    }
+
+    try {
+        await domisiliLembaga.create({
             data_diri: data_diri,
             surat_pengantar: surat_pengantar,
             tujuan: tujuan,

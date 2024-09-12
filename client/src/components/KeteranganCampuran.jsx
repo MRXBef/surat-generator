@@ -162,40 +162,40 @@ const handleSaveToDb = async() => {
           <Text style={StyleSheet.create({textAlign: 'center', fontSize: 12})}>Nomor : {nomorSuratIndex}</Text>
           <Text style={StyleSheet.create({marginTop: 30, fontSize: 12, textIndent: 50})}>Yang bertanda tangan dibawah ini Lurah Mataram Timur Kecamatan Mataram Kota Mataram, menerangkan bahwa :</Text>
           <View style={StyleSheet.create({marginTop: 20, display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 12})}>Nama</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 12, position: 'absolute', width: 200, left: 80})}>: {toUpperCaseFirstStr(nama)}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Nama</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(nama)}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 12})}>NIK</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 12, position: 'absolute', width: 200, left: 80})}>: {nik}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>NIK</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {nik}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 12})}>Tempat/tgl lahir</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 12, position: 'absolute', width: 200, left: 80})}>: {toUpperCaseFirstStr(tempatLahir)}, {ttl.split('-').reverse().join('-')}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Tempat/tgl lahir</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(tempatLahir)}, {ttl.split('-').reverse().join('-')}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 12})}>Jenis Kelamin</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 12, position: 'absolute', width: 200, left: 80})}>: {jk}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Jenis Kelamin</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {jk}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 12})}>Status</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 12, position: 'absolute', width: 200, left: 80})}>: {status}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Status</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {status}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 12})}>Agama</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 12, position: 'absolute', width: 200, left: 80})}>: {agama}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Agama</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {agama}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 12})}>Kewarganegaraan</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 12, position: 'absolute', width: 200, left: 80})}>: {kewarganegaraan}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Kewarganegaraan</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {kewarganegaraan}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 12})}>Pekerjaan</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 12, position: 'absolute', width: 200, left: 80})}>: {toUpperCaseFirstStr(pekerjaan)}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Pekerjaan</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(pekerjaan)}</Text>
           </View>
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 12})}>Alamat</Text>
-            <Text style={StyleSheet.create({marginLeft: 30, fontSize: 12, position: 'absolute', width: 200, left: 80})}>: {toUpperCaseFirstStr(alamat)}</Text>
+            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Alamat</Text>
+            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(alamat)}</Text>
           </View>
     
           <Text style={StyleSheet.create({fontSize: 12, textIndent: 50, marginTop: 30})}>Berdasarkan surat pengantar dari {dari} {toUpperCaseFirstStr(lingkungan)} Nomor : {nomorSurat} {tanggalSaatIni}, bahwa :</Text>

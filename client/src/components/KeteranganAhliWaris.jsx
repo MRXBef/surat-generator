@@ -156,36 +156,36 @@ useEffect(() => {
             <View key={index} style={StyleSheet.create({display: 'flex', flexDirection: 'column'})}>
                 <View style={StyleSheet.create({marginTop: 20, display: 'flex', flexDirection: 'row', marginLeft: 80})}>
                     <Text style={StyleSheet.create({marginLeft: -100, fontSize: 11, position: 'absolute', width: 200, left: 80})}>{index + 1}. </Text>
-                    <Text style={StyleSheet.create({fontSize: 11})}>Nama</Text>
-                    <Text style={StyleSheet.create({marginLeft: 30, fontSize: 11, position: 'absolute', width: 200, left: 80})}>: {toUpperCaseFirstStr(data.nama)}</Text>
+                    <Text style={StyleSheet.create({fontSize: 11, width: 100, textAlign: 'left'})}>Nama</Text>
+                    <Text style={StyleSheet.create({marginLeft: 10, fontSize: 11, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(data.nama)}</Text>
                 </View>
                 <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-                    <Text style={StyleSheet.create({fontSize: 11})}>NIK</Text>
-                    <Text style={StyleSheet.create({marginLeft: 30, fontSize: 11, position: 'absolute', width: 200, left: 80})}>: {data.nik}</Text>
+                    <Text style={StyleSheet.create({fontSize: 11, width: 100, textAlign: 'left'})}>NIK</Text>
+                    <Text style={StyleSheet.create({marginLeft: 10, fontSize: 11, width: 200, flexWrap: 'wrap'})}>: {data.nik}</Text>
                 </View>
                 <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-                    <Text style={StyleSheet.create({fontSize: 11})}>Jenis Kelamin</Text>
-                    <Text style={StyleSheet.create({marginLeft: 30, fontSize: 11, position: 'absolute', width: 200, left: 80})}>: {data.jk}</Text>
+                    <Text style={StyleSheet.create({fontSize: 11, width: 100, textAlign: 'left'})}>Jenis Kelamin</Text>
+                    <Text style={StyleSheet.create({marginLeft: 10, fontSize: 11, width: 200, flexWrap: 'wrap'})}>: {data.jk}</Text>
                 </View>
                 <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-                    <Text style={StyleSheet.create({fontSize: 11})}>Tempat/tgl lahir</Text>
-                    <Text style={StyleSheet.create({marginLeft: 30, fontSize: 11, position: 'absolute', width: 200, left: 80})}>: {toUpperCaseFirstStr(data.ttl)}</Text>
+                    <Text style={StyleSheet.create({fontSize: 11, width: 100, textAlign: 'left'})}>Tempat/tgl lahir</Text>
+                    <Text style={StyleSheet.create({marginLeft: 10, fontSize: 11, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(data.ttl)}</Text>
                 </View>
                 <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-                    <Text style={StyleSheet.create({fontSize: 11})}>Agama</Text>
-                    <Text style={StyleSheet.create({marginLeft: 30, fontSize: 11, position: 'absolute', width: 200, left: 80})}>: {data.agama}</Text>
+                    <Text style={StyleSheet.create({fontSize: 11, width: 100, textAlign: 'left'})}>Agama</Text>
+                    <Text style={StyleSheet.create({marginLeft: 10, fontSize: 11, width: 200, flexWrap: 'wrap'})}>: {data.agama}</Text>
                 </View>
                 <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-                    <Text style={StyleSheet.create({fontSize: 11})}>Pekerjaan</Text>
-                    <Text style={StyleSheet.create({marginLeft: 30, fontSize: 11, position: 'absolute', width: 200, left: 80})}>: {toUpperCaseFirstStr(data.pekerjaan)}</Text>
+                    <Text style={StyleSheet.create({fontSize: 11, width: 100, textAlign: 'left'})}>Pekerjaan</Text>
+                    <Text style={StyleSheet.create({marginLeft: 10, fontSize: 11, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(data.pekerjaan)}</Text>
                 </View>
                 <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-                    <Text style={StyleSheet.create({fontSize: 11})}>Hubungan Waris</Text>
-                    <Text style={StyleSheet.create({marginLeft: 30, fontSize: 11, position: 'absolute', width: 200, left: 80})}>: {toUpperCaseFirstStr(data.hubunganWaris)}</Text>
+                    <Text style={StyleSheet.create({fontSize: 11, width: 100, textAlign: 'left'})}>Hubungan Waris</Text>
+                    <Text style={StyleSheet.create({marginLeft: 10, fontSize: 11, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(data.hubunganWaris)}</Text>
                 </View>
                 <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-                    <Text style={StyleSheet.create({fontSize: 11})}>Alamat</Text>
-                    <Text style={StyleSheet.create({marginLeft: 30, fontSize: 11, position: 'absolute', width: 200, left: 80})}>: {toUpperCaseFirstStr(data.alamat)}</Text>
+                    <Text style={StyleSheet.create({fontSize: 11, width: 100, textAlign: 'left'})}>Alamat</Text>
+                    <Text style={StyleSheet.create({marginLeft: 10, fontSize: 11, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(data.alamat)}</Text>
                 </View>
             </View>
             ))}

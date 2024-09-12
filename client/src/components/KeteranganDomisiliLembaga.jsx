@@ -9,14 +9,14 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 
-const KeteranganTerdaftar = () => {
+const KeteranganDomisiliLembaga = () => {
   // data diri
   const [nomorSuratIndex, setNomorSuratIndex] = useState('')
-  const [nama, setNama] = useState('')
-  const [namaPemilik, setNamaPemilik] = useState('')
-  const [jk, setJk] = useState('Laki-Laki')
-  const [pekerjaan, setPekerjaan] = useState('')
-  const [alamat, setAlamat] = useState('')
+  const [namaLembaga, setNamaLembaga] = useState('')
+  const [alamatLembaga, setAlamatLembaga] = useState('')
+  const [namaKetua, setNamaKetua] = useState('')
+  const [alamatKetua, setAlamatKetua] = useState('')
+  const [tahunBerdiri, setTahunBerdiri] = useState('')
   // surat pengantar
   const [dari, setDari] = useState('Kepala Lingkungan')
   const [rt, setRt] = useState('')
@@ -110,9 +110,9 @@ axiosJWT.interceptors.request.use(async(config) => {
 const handleSaveToDb = async() => {
   try {
     const response = await axiosJWT.post(
-      `${import.meta.env.VITE_BASEURL}/surat/terdaftar`,
+      `${import.meta.env.VITE_BASEURL}/surat/domisililembaga`,
       {
-      data_diri: `${nomorSuratIndex},${nama},${namaPemilik},${jk},${pekerjaan},${alamat}`,
+      data_diri: `${nomorSuratIndex},${namaLembaga},${alamatLembaga},${namaKetua},${alamatKetua},${tahunBerdiri}`,
       surat_pengantar: `${dari},${lingkungan},${nomorSurat}`,
       tujuan: `${keperluan}`,
       yang_ttd: `${role},${namaTtd},${nip}`
@@ -151,40 +151,51 @@ const handleSaveToDb = async() => {
             </View>
             <View style={StyleSheet.create({width: '100%', borderBottom: '1px solid black', marginTop: 1})}></View>
     
-          <Text style={StyleSheet.create({textAlign: 'center', textDecoration: 'underline', fontSize: 15, marginTop: 10})}>SURAT KETERANGAN TERDAFTAR</Text>
+          <Text style={StyleSheet.create({textAlign: 'center', textDecoration: 'underline', fontSize: 15, marginTop: 10})}>SURAT KETERANGAN DOMISILI LEMBAGA</Text>
           <Text style={StyleSheet.create({textAlign: 'center', fontSize: 12})}>Nomor : {nomorSuratIndex}</Text>
-          <Text style={StyleSheet.create({marginTop: 30, fontSize: 12, textIndent: 50})}>Memperhatikan Undang-Undang Nomor : 17 Tahun 2013 tentang Organisasi Kemasyarakatan, dan Surat Pengantar dari Lembaga Kemasyarakatan Lingkungan Karang Bedil Nomor : {nomorSurat}, Tanggal {tanggalSaatIni}, Perihal Permohonan Keterangan Terdaftar, setelah diadakan penelitian dokumen/berkas dan Penelitian lapangan, dengan ini Kelurahan Mataram Timur Menyatakan :</Text>
-          <View style={StyleSheet.create({marginTop: 20, display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Nama Usaha</Text>
-            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(nama)}</Text>
-          </View>
-          <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Pemilik Usaha</Text>
-            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(namaPemilik)}</Text>
-          </View>
-          <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Jenis Kelamin</Text>
-            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {jk}</Text>
-          </View>
-          <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Pekerjaan</Text>
-            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(pekerjaan)}</Text>
-          </View>
-          <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', marginLeft: 80})}>
-            <Text style={StyleSheet.create({fontSize: 12, width: 100, textAlign: 'left'})}>Alamat</Text>
-            <Text style={StyleSheet.create({marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap'})}>: {toUpperCaseFirstStr(alamat)}</Text>
-          </View>
+          <Text style={StyleSheet.create({marginTop: 30, fontSize: 12, textIndent: 50})}>Yang bertanda tangan dibawah ini Lurah Mataram Timur Kecamatan Mataram Kota Mataram, menerangkan kepada :</Text>
+            <View style={StyleSheet.create({ marginTop: 20, display: 'flex', flexDirection: 'row', marginLeft: 80 })}>
+                <Text style={StyleSheet.create({ fontSize: 12, width: 100, textAlign: 'left' })}>Nama Lembaga</Text>
+                <Text style={StyleSheet.create({ marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap' })}>
+                    : {toUpperCaseFirstStr(namaLembaga)}
+                </Text>
+            </View>
+            <View style={StyleSheet.create({ display: 'flex', flexDirection: 'row', marginLeft: 80 })}>
+                <Text style={StyleSheet.create({ fontSize: 12, width: 100, textAlign: 'left' })}>Alamat Lembaga</Text>
+                <Text style={StyleSheet.create({ marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap' })}>
+                    : {toUpperCaseFirstStr(alamatLembaga)}
+                </Text>
+            </View>
+            <View style={StyleSheet.create({ display: 'flex', flexDirection: 'row', marginLeft: 80 })}>
+                <Text style={StyleSheet.create({ fontSize: 12, width: 100, textAlign: 'left' })}>Nama Ketua</Text>
+                <Text style={StyleSheet.create({ marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap' })}>
+                    : {toUpperCaseFirstStr(namaKetua)}
+                </Text>
+            </View>
+            <View style={StyleSheet.create({ display: 'flex', flexDirection: 'row', marginLeft: 80 })}>
+                <Text style={StyleSheet.create({ fontSize: 12, width: 100, textAlign: 'left' })}>Alamat Ketua</Text>
+                <Text style={StyleSheet.create({ marginLeft: 10, fontSize: 12, width: 200, flexWrap: 'wrap' })}>
+                    : {toUpperCaseFirstStr(alamatKetua)}
+                </Text>
+            </View>
+
+
 
           <Text style={StyleSheet.create({fontSize: 12, textIndent: 50, marginTop: 30})}>Berdasarkan surat pengantar dari {dari} {toUpperCaseFirstStr(lingkungan)} Nomor : {nomorSurat} {tanggalSaatIni}, bahwa :</Text>
     
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', gap: 5, marginTop: 5})}>
                 <Text style={StyleSheet.create({fontSize: 12})}>1. </Text>
-                <Text style={StyleSheet.create({fontSize: 12})}>Telah terdaftar di Kelurahan Mataram Timur dan Surat Keterangan ini berlaku sejak tanggal di tanda tangani tanggal {tanggalSaatIni}.</Text>
+                <Text style={StyleSheet.create({fontSize: 12})}>Memang benar Lembaga yang Namanya tersebut di atas berdomisili di wilayah kami Lingkungan {toUpperCaseFirstStr(lingkungan)} Kelurahan Mataram Timur Kecamatan Mataram.</Text>
           </View>
     
           <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', gap: 5, marginTop: 5})}>
                 <Text style={StyleSheet.create({fontSize: 12})}>2. </Text>
-                <Text style={StyleSheet.create({fontSize: 12})}>Apabila dikemudian hari terdapat kekeliruan, kesalahan, penyimpangan, penyalahgunaan dan pelanggaran hukum, akan dilakukan perbaikan,pembekuan dan/atau pencabutan sesuai ketentuan yang berlaku.</Text>
+                <Text style={StyleSheet.create({fontSize: 12})}>Lembaga ini berdiri  sejak Tahun {tahunBerdiri}.</Text>
+          </View>
+
+          <View style={StyleSheet.create({display: 'flex', flexDirection: 'row', gap: 5, marginTop: 5})}>
+                <Text style={StyleSheet.create({fontSize: 12})}>3. </Text>
+                <Text style={StyleSheet.create({fontSize: 12})}>Surat Keterangan ini diberikan kepada yang bersangkutan untuk keperluan {keperluan.toUpperCase()} dan Surat ini Digunakan Untuk Satu Kali Keperluan.</Text>
           </View>
     
           <Text style={StyleSheet.create({marginTop: 30, fontSize: 12, textIndent: 50})}>Demikian surat keterangan terdaftar ini diberikan untuk dipergunakan sebagaimana mestinya.</Text>
@@ -213,11 +224,11 @@ const handleSaveToDb = async() => {
 
   return (
     <form action="" style={{width: '100%'}} onSubmit={handlePrint}>
-      <h1 className='mb-5 mt-5' style={{fontSize: '20px', color: 'white', fontWeight: 'bold', borderRadius: '10px', textAlign: 'center'}}><span><i style={{position: 'absolute', marginTop: '3px', marginLeft: '-30px'}}><CIcon icon={cilNotes}/></i></span> SURAT KETERANGAN TERDAFTAR</h1>
+      <h1 className='mb-5 mt-5' style={{fontSize: '20px', color: 'white', fontWeight: 'bold', borderRadius: '10px', textAlign: 'center'}}><span><i style={{position: 'absolute', marginTop: '3px', marginLeft: '-30px'}}><CIcon icon={cilNotes}/></i></span> SURAT KETERANGAN DOMISILI LEMBAGA</h1>
 
       {/* DATA USAHA */}
       <div className="data-diri" style={{backgroundColor: 'white', padding: '100px', width: '100%', borderRadius: '10px'}}>
-        <h1 className='mb-5' style={{fontSize: '20px', color: 'darkorange', fontWeight: 'bold'}}>NOMOR SURAT & DATA USAHA</h1>
+        <h1 className='mb-5' style={{fontSize: '20px', color: 'darkorange', fontWeight: 'bold'}}>NOMOR SURAT & DATA LEMBAGA</h1>
         <label className="label has-text-black">Nomor Surat</label>
         <div className="field">
             <div className="control">
@@ -225,43 +236,40 @@ const handleSaveToDb = async() => {
             </div>
             <p className="help has-text-black">Masukkan nomor surat</p>
         </div>
-        <label className="label has-text-black">Nama Usaha</label>
+        <label className="label has-text-black">Nama Lembaga</label>
         <div className="field">
             <div className="control">
-                <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setNama(e.target.value)}} required/>
+                <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setNamaLembaga(e.target.value)}} required/>
             </div>
-            <p className="help has-text-black">Masukkan nama usaha</p>
+            <p className="help has-text-black">Masukkan nama lembaga</p>
         </div>
-        <label className="label has-text-black">Nama Pemilik Usaha</label>
+        <label className="label has-text-black">Alamat Lembaga</label>
         <div className="field">
             <div className="control">
-                <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setNamaPemilik(e.target.value)}} required/>
+                <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setAlamatLembaga(e.target.value)}} required/>
             </div>
-            <p className="help has-text-black">Masukkan nama pemilik usaha</p>
+            <p className="help has-text-black">Masukkan alamat lembaga</p>
         </div>
-        <label className="label has-text-black">Jenis Kelamin</label>
-        <div className="field">
-            <div className="control select is-fullwidth">
-                <select className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setJk(e.target.value)}} required>
-                  <option value="Laki-Laki">Laki-Laki</option>
-                  <option value="Perempuan">Perempuan</option>
-                </select>
-            </div>
-            <p className="help has-text-black">Pilih Kelamin</p>
-        </div>
-        <label className="label has-text-black">Pekerjaan</label>
+        <label className="label has-text-black">Nama Ketua Lembaga</label>
         <div className="field">
             <div className="control">
-                <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setPekerjaan(e.target.value)}} required/>
+                <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setNamaKetua(e.target.value)}} required/>
             </div>
-            <p className="help has-text-black">Masukkan pekerjaan anda</p>
+            <p className="help has-text-black">Masukkan nama ketua lembaga</p>
         </div>
-        <label className="label has-text-black">Alamat</label>
+        <label className="label has-text-black">Alamat Ketua Lembaga</label>
         <div className="field">
             <div className="control">
-                <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setAlamat(e.target.value)}} required/>
+                <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setAlamatKetua(e.target.value)}} required/>
             </div>
-            <p className="help has-text-black">Masukkan alamat anda</p>
+            <p className="help has-text-black">Masukkan alamat ketua lembaga</p>
+        </div>
+        <label className="label has-text-black">Tahun Berdiri</label>
+        <div className="field">
+            <div className="control">
+                <input className="input is-fullwidth has-background-white has-text-black" type="text" placeholder="" onChange={(e) => {setTahunBerdiri(e.target.value)}} required/>
+            </div>
+            <p className="help has-text-black">contoh: 2024</p>
         </div>
       </div>
 
@@ -361,4 +369,4 @@ const handleSaveToDb = async() => {
   )
 }
 
-export default KeteranganTerdaftar
+export default KeteranganDomisiliLembaga
