@@ -142,6 +142,27 @@ export const createTidakMampu = async(req, res) => {
     }
 }
 
+export const createTerdaftar = async(req, res) => {
+    const {data_diri, surat_pengantar, tujuan, yang_ttd} =req.body
+    if(!data_diri || !surat_pengantar || !tujuan || !yang_ttd){
+        return res.status(400).json({msg: "Semua data harus diisikan!"})
+    }
+
+    try {
+        await tidakMampu.create({
+            data_diri: data_diri,
+            surat_pengantar: surat_pengantar,
+            tujuan: tujuan,
+            yang_ttd: yang_ttd
+        })
+        res.status(200).json({msg: "Surat berhasil diupload!"})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: 'Terjadi kesalahan dalam server' });
+
+    }
+}
+
 export const createCampuran = async(req, res) => {
     const {data_diri, surat_pengantar, pernyataan, tujuan, yang_ttd} =req.body
     if(!data_diri || !surat_pengantar || !pernyataan || !tujuan || !yang_ttd){

@@ -16,6 +16,7 @@ import Surat from "./models/suratModels.js"
 import campuran from "./models/campuranModels.js"
 import taksiranTanah from "./models/taksiranTanah.js"
 import rekomendasiBbm from "./models/rekomendasiBbm.js";
+import terdaftar from "./models/terdaftarModels.js";
 
 dotenv.config()
 
@@ -38,7 +39,7 @@ try {
     // await db.sync(taksiranTanah)
     // await db.sync(rekomendasiBbm)
 
-    // await db.sync()
+    await db.sync(terdaftar)
 } catch (error) {
     console.log(error)
 }

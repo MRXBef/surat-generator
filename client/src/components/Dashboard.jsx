@@ -20,6 +20,7 @@ import KeteranganCampuran from './KeteranganCampuran';
 import KeteranganTanah from './KeteranganTanah';
 import KeteranganBbm from './KeteranganBbm';
 import SpinnerLoader from './SpinnerLoader';
+import KeteranganTerdaftar from './KeteranganTerdaftar';
 
 const Dashboard = () => {
     const [name, setName] = useState('')
@@ -85,6 +86,10 @@ const Dashboard = () => {
             case '11':
                     setActiveMenu('11')
                     setForm(<KeteranganBbm/>)
+                break;
+            case '12':
+                    setActiveMenu('12')
+                    setForm(<KeteranganTerdaftar/>)
                 break;
             
             default:
@@ -206,6 +211,12 @@ const Dashboard = () => {
                     <ul>
                         <i><CIcon icon={cilPen}/></i>
                         <li>Surat Rekomendasi BBM</li>
+                    </ul>
+                </div>
+                <div className={`menu ${activeMenu === '12' ? 'active-menu' : ''}`} onClick={() => handleMenuClicked('12')}>
+                    <ul>
+                        <i><CIcon icon={cilPen}/></i>
+                        <li>Surat Keterangan Terdaftar</li>
                     </ul>
                 </div>
             </div>
