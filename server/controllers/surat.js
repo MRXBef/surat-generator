@@ -11,6 +11,7 @@ import Surat from "../models/suratModels.js"
 import campuran from "../models/campuranModels.js"
 import taksiranTanah from "../models/taksiranTanah.js"
 import rekomendasiBbm from "../models/rekomendasiBbm.js"
+import terdaftar from "../models/terdaftarModels.js"
 
 export const createKematian = async(req, res) => {
     const {data_diri, surat_pengantar, tujuan, yang_ttd} =req.body
@@ -144,12 +145,13 @@ export const createTidakMampu = async(req, res) => {
 
 export const createTerdaftar = async(req, res) => {
     const {data_diri, surat_pengantar, tujuan, yang_ttd} =req.body
-    if(!data_diri || !surat_pengantar || !tujuan || !yang_ttd){
+    console.log(req.body)
+    if(!data_diri || !surat_pengantar || !yang_ttd){
         return res.status(400).json({msg: "Semua data harus diisikan!"})
     }
 
     try {
-        await tidakMampu.create({
+        await terdaftar.create({
             data_diri: data_diri,
             surat_pengantar: surat_pengantar,
             tujuan: tujuan,
