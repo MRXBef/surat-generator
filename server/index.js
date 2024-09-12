@@ -39,7 +39,7 @@ try {
     // await db.sync(taksiranTanah)
     // await db.sync(rekomendasiBbm)
 
-    await db.sync(terdaftar)
+    await db.sync()
 } catch (error) {
     console.log(error)
 }
