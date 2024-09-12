@@ -322,6 +322,7 @@ export const findDataByYears = async (req, res) => {
         taksiranTanah: 'Surat Keterangan Tanah',
         rekomendasiBbm: 'Surat Keterangan Bbm',
         terdaftar: 'Surat Keterangan Terdaftar',
+        domisiliLembaga: 'Surat Domisili Lembaga',
     };
 
     try {
@@ -337,7 +338,8 @@ export const findDataByYears = async (req, res) => {
             campuran,
             taksiranTanah,
             rekomendasiBbm,
-            terdaftar
+            terdaftar,
+            domisiliLembaga
         };
 
         const dataPerBulan = Object.keys(models).reduce((acc, modelName) => {

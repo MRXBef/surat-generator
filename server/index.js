@@ -40,7 +40,7 @@ try {
     // await db.sync(taksiranTanah)
     // await db.sync(rekomendasiBbm)
 
-    await domisiliLembaga.sync()
+    await domisiliLembaga.sync({alter: true})
 } catch (error) {
     console.log(error)
 }
