@@ -47,8 +47,8 @@ try {
 
 app.use(cors({
     credentials:true, 
-    // origin: 'https://suket-mataramtimur.vercel.app',
-    origin: 'http://localhost:5173',
+    origin: 'https://suket-mataramtimur.vercel.app',
+    // origin: 'http://localhost:5173',
 }))
 app.use(cookieParser())
 app.use(json())
