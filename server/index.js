@@ -4,18 +4,18 @@ import db from './config/Database.js'
 import Router from './routes/index.js'
 import cookieParser from "cookie-parser";
 import cors from 'cors'
-import Kematian from "./models/kematianModels.js";
-import bedaNama from "./models/bedaNamaModels.js";
-import belumMenikah from "./models/belumMenikahModels.js";
-import domisiliUsaha from "./models/domisiliUsahaModels.js";
-import kelakuanBaik from "./models/kelakuanBaik.js";
-import tidakMampu from "./models/tidakMampuModels.js";
-import usaha from "./models/usahaModels.js";
-import ahliWaris from "./models/ahliWarisModels.js"
-import Surat from "./models/suratModels.js"
-import campuran from "./models/campuranModels.js"
-import taksiranTanah from "./models/taksiranTanah.js"
-import rekomendasiBbm from "./models/rekomendasiBbm.js";
+// import Kematian from "./models/kematianModels.js";
+// import bedaNama from "./models/bedaNamaModels.js";
+// import belumMenikah from "./models/belumMenikahModels.js";
+// import domisiliUsaha from "./models/domisiliUsahaModels.js";
+// import kelakuanBaik from "./models/kelakuanBaik.js";
+// import tidakMampu from "./models/tidakMampuModels.js";
+// import usaha from "./models/usahaModels.js";
+// import ahliWaris from "./models/ahliWarisModels.js"
+// import Surat from "./models/suratModels.js"
+// import campuran from "./models/campuranModels.js"
+// import taksiranTanah from "./models/taksiranTanah.js"
+// import rekomendasiBbm from "./models/rekomendasiBbm.js";
 import terdaftar from "./models/terdaftarModels.js";
 
 dotenv.config()
