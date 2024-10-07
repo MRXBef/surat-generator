@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import SpinnerLoader from './SpinnerLoader';
+import smendak from '../assets/img/smendak.png'
 
 const LoginPage = () => {
     const [email, setEmail] = useState('')
@@ -124,6 +125,9 @@ const LoginPage = () => {
                     <p className='is-center'>
                         {msg}
                     </p>  
+                    <div style={{width: '100%', padding: '10px', display: 'flex', justifyContent: 'center'}}>
+                            <img src={smendak} style={{borderRadius: '10px', width: '50px'}} alt="" />
+                    </div>
                 </form>
             </div>
         </div>
