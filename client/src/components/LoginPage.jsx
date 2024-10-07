@@ -126,7 +126,7 @@ const LoginPage = () => {
                         {msg}
                     </p>  
                     <div style={{width: '100%', padding: '10px', display: 'flex', justifyContent: 'center'}}>
-                            <img src={smendak} style={{borderRadius: '10px', width: '50px'}} alt="" />
+                            <img src={smendak} style={{borderRadius: '10px', width: '50px', height: '25px', objectFit: 'cover'}} alt="" />
                     </div>
                 </form>
             </div>
