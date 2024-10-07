@@ -81,10 +81,10 @@ const LoginPage = () => {
   return (
     <div className='my-container'>
         <div className="loginBox">
-            <div className="loginLogo" style={{position: 'relative'}}>
+            <div className="loginLogo">
                 <img src={mataram} alt="" />
                 <p>KELURAHAN MATARAM TIMUR</p>
-                <div style={{width: '100%', padding: '10px', display: 'flex', justifyContent: 'center', position: 'absolute'}}>
+                <div style={{width: '100%', padding: '10px', display: 'flex', justifyContent: 'center'}}>
                         <img src={smendak} style={{borderRadius: '5px', width: '75px', objectFit: 'cover'}} alt="" />
                 </div>
             </div>
