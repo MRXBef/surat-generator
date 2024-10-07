@@ -85,7 +85,7 @@ const LoginPage = () => {
                 <img src={mataram} alt="" />
                 <p>KELURAHAN MATARAM TIMUR</p>
                 <div style={{width: '100%', padding: '10px', display: 'flex', justifyContent: 'center'}}>
-                        <img src={smendak} style={{borderRadius: '5px', width: '50px', objectFit: 'cover'}} alt="" />
+                        <img src={smendak} style={{borderRadius: '5px', width: '75px', objectFit: 'cover'}} alt="" />
                 </div>
             </div>
             <div className="loginForm">
