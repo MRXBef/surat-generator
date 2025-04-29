@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import SpinnerLoader from './SpinnerLoader';
 import smendak from '../assets/img/smendak.png'
 
-const LoginPage = () => {
+const sdLoginPage = () => { //
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [msg, setMsg] = useState('')
