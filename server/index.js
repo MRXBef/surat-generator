@@ -21,7 +21,7 @@ import domisiliLembaga from "./models/domisiliLembaga.js";
 
 dotenv.config()
 
-const app = express()
+const app = expresss()
 const PORT = process.env.PORT
 
 try {
