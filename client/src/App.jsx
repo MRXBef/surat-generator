@@ -1,6 +1,6 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
-import LoginPage from './components/LoginPage';
+import Payment from './components/Payment';
 import Dashboard from './components/Dashboard';
 import Laporan from './components/Laporan';
 import EditSurat from './components/EditSurat';
@@ -11,7 +11,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<LoginPage/>}/>
+          <Route path="/" element={<Payment/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/laporan" element={<Laporan/>}/>
         </Routes>
