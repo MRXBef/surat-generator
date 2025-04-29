@@ -6,7 +6,7 @@ import Laporan from './components/Laporan';
 import EditSurat from './components/EditSurat';
 
 
-function App(() {
+function App() {
   return (
     <>
       <Router>
